@@ -1,0 +1,117 @@
+*{
+    font-family: 'Poppins';
+    color: #1e0847;
+}
+.wrapper{
+    background: #ececec;
+    padding: 0 20px 0 20px;
+}
+.main{
+    display: flex;
+    justify-content:center ;
+    align-items: center;
+    min-height:100vh;
+}
+.row{
+    width: 1100px;
+    height: 650px;
+    border-radius: 10px;
+    background:#fff;
+    box-shadow: 2px 0 10px 5px rgb(82, 81, 81);
+}
+.side-image{
+    background-position: center ;
+    background-size:cover ;
+    background-repeat: no-repeat;
+    position: relative;
+    border-radius: 10px 0 0 0;
+}
+img{
+    width: 50px;
+    position: absolute;
+    top: 10px;
+    left: 30px;
+}
+.right{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.input-box{
+    width: 330px;
+    box-sizing: border-box;
+}
+.input-box h1{
+    font-weight: bold;
+    font-size: 20px;
+    text-align: center;
+    margin-bottom: 30px;
+    color: #1e0847;
+}
+.input-field{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    padding: 0 10px 0 10px;
+
+}
+.input{
+    height: 45px;
+    width: 100%;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid black;
+    outline: none;
+    margin-bottom: 10px;
+    color: #40414a;
+}
+.input-box .input-field .label{
+    position: absolute;
+    top: 10px;
+    left:10px;
+    pointer-events: none;
+    transition: .5s;
+
+}
+.input-field .input:focus ~ .label{
+    top: -10px;
+    font-size: 13px;
+}
+.input-field .input:valid ~ .label{
+    top: -5px;
+    font-size: 14px;
+    color: #5d5076;
+}
+.input-field .input:focus, .input-field .input:valid{
+    border-bottom: 2px solid black;
+}
+.submit{
+    border: none;
+    outline: none;
+    height: 45px;
+    border-radius: 5px;
+    transition: .5s;
+    background-color:#1e0847 ;
+    color: white;
+}
+.submit:hover{
+    background-color:#221f37 ;
+    color: white;
+}
+.signin{
+    text-align: center;
+    font-size: medium;
+    margin-top: 25px;
+}
+span a{
+    text-decoration: none;
+    font-weight: 700;
+    color: #000;
+    transition: .5s;
+}
+span a:hover{
+     text-decoration: underline;
+     color: #000;
+}

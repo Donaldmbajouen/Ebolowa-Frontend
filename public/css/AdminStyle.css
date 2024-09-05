@@ -1,0 +1,19 @@
+.input_search{
+    border: 2px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 220px;
+    /* margin-left: 10px; */
+}
+.input_search input{
+    border:none;
+    outline:none;
+    margin-left: 5px;
+}
+.button-header{
+    display: flex;
+    justify-content: flex-end;
+    padding: 3px;
+    margin-right: 10px;
+}
