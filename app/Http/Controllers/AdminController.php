@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Session;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -9,12 +9,16 @@ class AdminController extends Controller
     public function dashboard(){
         return view('Admin/dashboard');
     }
-    public function structures(){
-        return view('Admin/structures');
+    public function hotels(){
+        return view('Admin/Hotels/hotels');
     }
-    public function AjouterHotels(){
-        return view('Admin/AjoutHotel');
+    public function SiteT(){
+        return view('Admin/SiteT/SiteT');
     }
+    public function AjouterSiteT(){
+        return view('Admin/SiteT/AjoutSiteT');
+    }
+
 
 
 }

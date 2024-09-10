@@ -34,7 +34,7 @@ body{
 .langue{
     display: flex;
     justify-content: flex-end;
-    margin-left:300px;
+    /* margin-left:300px; */
 }
 .img-header{
     width: 100%;
@@ -553,5 +553,7 @@ body{
     border: 2px solid rgba(17, 9, 44, 0.286);
     color: black;
 }
-
+.is-invalid{
+    border: 1px solid red;
+}
 

@@ -28,6 +28,8 @@
     <!-- Page Wrapper -->
     <div id="wrapper">
 
+
+
         <!-- Sidebar -->
         <ul class="navbar-nav bg-gradient  sidebar sidebar-dark accordion" id="accordionSidebar" style="background-color: rgb(17, 23, 65)">
 
@@ -36,7 +38,9 @@
                 <div class="sidebar-brand-icon ">
                     <i class="fas fa-city"></i>
                 </div>
-                <div class="sidebar-brand-text mx-2"> Njemi Admin</div>
+                <div class="sidebar-brand-text mx-2">
+
+                </div>
             </a>
 
             <!-- Divider -->
@@ -56,12 +60,27 @@
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
                     aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-fw fa-university"></i>
-                    <span>Structures</span>
+                    <span>HOTELS</span>
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="{{ route('structures')}}">Structure</a>
-                        <a class="collapse-item" href="{{ route('structures')}}">Statistiques</a>
+                        <a class="collapse-item" href="{{ route('Adminhotels')}}">HOTELS</a>
+                        <a class="collapse-item" href="{{ route('Adminhotels')}}">Statistiques</a>
+                    </div>
+                </div>
+            </li>
+
+            <hr class="sidebar-divider">
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseT"
+                    aria-expanded="true" aria-controls="collapseTwo">
+                    <i class="fas fa-fw fa-university"></i>
+                    <span>Site touristique</span>
+                </a>
+                <div id="collapseT" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="{{ route('AdminSiteT')}}">Site Touristique</a>
+                        <a class="collapse-item" href="{{ route('AdminSiteT')}}">Statistiques</a>
                     </div>
                 </div>
             </li>
@@ -77,8 +96,8 @@
                 </a>
                 <div id="collapsewo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="{{  route('structures')}}">Utilisateurs</a>
-                        <a class="collapse-item" href="{{  route('structures')}}">Statistiques</a>
+                        <a class="collapse-item" href="{{  route('AdminSiteT')}}">Utilisateurs</a>
+                        <a class="collapse-item" href="{{  route('AdminSiteT')}}">Statistiques</a>
                     </div>
                 </div>
             </li>
@@ -212,23 +231,29 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Donald Mbajouen</span>
-                                <img class="img-profile rounded-circle"
-                                    src="img/undraw_profile.svg">
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">
+                                    @if (session()->has('user'))
+                                        <h6 class="mt-2">Bienvenue, {{ session('user')['name'] }}</h6>
+                                        <img class="img-profile rounded-circle"
+                                            src="img/undraw_profile.svg">
+                                        <!-- Dropdown - User Information -->
+                                        <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                                        aria-labelledby="userDropdown">
+                                        <a class="dropdown-item" href="#">
+                                            <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                                            Profile
+                                        </a>
+                                        <div class="dropdown-divider"></div>
+                                            <form action="{{ route('logout') }}" method="POST">
+                                                @csrf
+                                                <input type="submit" class="btn btn-danger ms-3" value="Déconnexion">
+                                            </form>
+                                        </div>
+                                    @else
+                                        <a href="{{ route('login') }}" class="btn btn-primary">Connexion</a>
+                                    @endif
+                                </span>
                             </a>
-                            <!-- Dropdown - User Information -->
-                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Profile
-                                </a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
-                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Logout
-                                </a>
-                            </div>
                         </li>
 
                     </ul>

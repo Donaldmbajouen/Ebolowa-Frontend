@@ -21,6 +21,13 @@ class Kernel extends HttpKernel
         \Illuminate\Foundation\Http\Middleware\ValidatePostSize::class,
         \App\Http\Middleware\TrimStrings::class,
         \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
+
+    ];
+
+    protected $routeMiddleware = [
+        // ...
+        // 'admin_principal' => \App\Http\Middleware\AdminMiddleware::class,
+        'admin_secondaire' => \App\Http\Middleware\AdminSecondaireMiddleware::class,
     ];
 
     /**
@@ -43,6 +50,10 @@ class Kernel extends HttpKernel
             \Illuminate\Routing\Middleware\ThrottleRequests::class.':api',
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
         ],
+
+        'admin_principal'=>[
+            'web', \App\Http\Middleware\AdminMiddleware::class,
+        ]
     ];
 
     /**

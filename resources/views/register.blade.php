@@ -10,9 +10,10 @@
 </head>
 <body>
 <div class="wrapper ">
+   
     <div class="container main">
         <div class="rounded-3" style="padding-right:13px;background-color: #1e0847;" >
-            <div class="row p-3"style="border-bottom-right-radius: 40%">
+            <div class="row row1 p-3"style="border-bottom-right-radius: 40%">
                 <div class="col-md-6 side-image" style="background-image: url('{{asset('img/login.png')}}');">
                 </div>
                 <div class="col-md-6 right">

@@ -21,27 +21,47 @@
 </head>
 <body>
 
+
+     {{-- {{ session('user')['name']}} --}}
+    {{-- @if (session('user'))
+        <h1>Bienvenue, {{ session('user')['name'] }}</h1>
+    @endif --}}
+
    <nav class=" navbar navbar-expand-sm p-2 fixed-top" style="background-color:rgba(173, 185, 203, 0.649); box-shadow:0px 3px 10px -1px black; ">
         <div class="container-fluid ms-5">
         <a class="Title navbar-brand nav-link me-5" style="color: rgb(14, 10, 74); font-size: 25px;" href="{{route('accueil')}}"><span class="first">E</span><span class="end me-5"> Bolowa</span></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample03" aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse ms-5" id="navbarsExample03">
-                <ul class="navbar-nav ms-5  mb-2 mb-sm-0">
-                    <li class="nav-item">
-                        <a class="nav-link me-2" style="color: rgb(14, 10, 74);"  href="{{route('historique')}}">Histoire</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link me-2"style="color: rgb(14, 10, 74)" href=" {{route('site_touristique')}} ">Site Touristiques</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link me-2" style="color: rgb(14, 10, 74);" href="{{route('hotels')}}">Hotels</a>
-                    </li>
-                </ul>
-                <form class="d-flex langue" role="search">
-                    <button class="btn btn-success" type="submit">EN <i class="fa fa-chevron-down"></i></button>
-                </form>
+        <div class="collapse navbar-collapse ms-5 row" id="navbarsExample03">
+                <div class="col-sm-8">
+                    <ul class="navbar-nav ms-5  mb-2 mb-sm-0">
+                        <li class="nav-item">
+                            <a class="nav-link me-2" style="color: rgb(14, 10, 74);"  href="{{route('historique')}}">Histoire</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link me-2"style="color: rgb(14, 10, 74)" href=" {{route('site_touristique')}} ">Site Touristiques</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link me-2" style="color: rgb(14, 10, 74);" href="{{route('hotels')}}">Hotels</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-sm-4">
+                    <form class="d-flex langue" role="search">
+                        <button class="btn btn-success px-2 mx-2" >EN <i class="fa fa-chevron-down"></i></button>
+
+                        @if (session()->has('user'))
+                            <h6 class="mt-2">Bienvenue, {{ session('user')['name'] }}</h6>
+                            <form action="{{ route('logout') }}" method="POST">
+                                @csrf
+                                <input type="submit" class="btn btn-danger ms-3" value="Déconnexion">
+                            </form>
+                        @else
+                            <a href="{{ route('login') }}" class="btn btn-primary">Connexion</a>
+                        @endif
+                    </form>
+                </div>
         </div>
         </div>
     </nav>

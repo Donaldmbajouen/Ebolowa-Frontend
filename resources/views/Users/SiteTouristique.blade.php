@@ -2,6 +2,7 @@
 
 @section('content')
 
+
 <div class="hearder_content_touristique mb-1">
     <img src="{{ asset('img/UserImages/reunification.png') }}" style="" class="card-img" alt="...">
     <div class="d-flex  form-content justify-content-center bg-light p-2">

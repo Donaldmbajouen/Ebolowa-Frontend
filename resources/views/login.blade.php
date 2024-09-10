@@ -9,9 +9,21 @@
     <title>Ebolowa.com</title>
 </head>
     <div class="wrapper ">
-        <div class="container main">
-            <div class="rounded-3" style="padding-right:13px;background-color: #1e0847;" >
-                <div class="row p-3"style="border-bottom-right-radius: 40%;border-top-left-radius: 1%;">
+        @if (session('success'))
+                <div class="alert alert-info p-3" role="alert">
+                    {{session('success')}}
+                </div>
+            @endif
+            @if (session('error'))
+                <div class="alert alert-danger p-3" role="alert">
+                    {{session('error')}}
+                </div>
+            @endif
+
+        <div class="container main ">
+
+            <div class="rounded-3 " style="padding-right:13px;background-color: #1e0847;" >
+                <div class="row row1  p-3" style="border-bottom-right-radius: 40%;border-top-left-radius: 1%;">
                     <div class="col-md-6 side-image" style="background-image: url('{{asset('img/login.png')}}');">
                         <!-- Image -->
 {{--                        <img src="{{asset('img/login.pn')}}" >--}}
@@ -41,18 +53,39 @@
                                         <span style="color: red; margin-left: 10px">
                                         @error('password')
                                             {{$message}}
-                                            @enderror
+                                        @enderror
                                     </span>
                                         <i class="fas fa-lock" style="margin-left: 300px;"></i>
                                     </div>
                                 </div>
 
                                 <div class="input-field">
-                                    <input type="submit" class="submit" value="Login">
+                                    <input type="submit" class="submit mb-3" value="Login">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <button type="" class="submit w-100 mb-3 bg-danger btn-icon-split" value="">
+                                                <span>
+                                                    <i class="fab fa-google"></i>
+                                                    With Google
+                                                </span>
+                                            </button>
+                                        </div>
+                                        <div class="col-md-6 text-bg-light" style="color: white">
+                                            <button type="" style="color: white" class="submit hover bg-primary w-100 btn-icon-split" value="">
+                                                <span>
+                                                    <i class="fab fa-facebook-f" style="color: white"></i>
+                                                    With Facebook
+                                                </span>
+
+                                            </button>
+                                        </div>
+
+                                    </div>
+
                                 </div>
                             </form>
 
-                            <div class="signin">
+                            <div class="signin fa-w-3">
                                 <span>Don't have an account? <a href="{{ 'register' }}">Register</a> </span>
                             </div>
                         </div>
