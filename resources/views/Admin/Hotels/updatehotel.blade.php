@@ -18,12 +18,12 @@
             @endif
             <div class="col mt-2">
                 <div class="col">
-                    <form action="{{route('AjoutHotels')}}" method="POST" class="p-4"  enctype="multipart/form-data">
+                    <form action="{{route('PostUpdateHotel', ['id' => $hotel['id']])}}" method="POST" class="p-4"  enctype="multipart/form-data">
                         @csrf
                         <div class="row">
                             <div class="col-md-6">
                                 <label for="name" name="name">Nom de L'Hotel</label>
-                                <input type="text"  name="name" class="form-control @error('name') is-invalid @enderror" value="{{ old('name') }}">
+                                <input type="text"  name="name" class="form-control @error('name') is-invalid @enderror" value="{{ $hotel['name'] }}">
                                 <span style="color: red; margin-left: 10px">
                                     @error('name')
                                     {{$message}}
@@ -32,7 +32,7 @@
                             </div>
                             <div class="col-md-6">
                                 <label for="name">Longitude</label>
-                                <input type="text" name="longitude" class="form-control @error('longitude') is-invalid @enderror"value="{{ old('longitude') }}">
+                                <input type="text" name="longitude" class="form-control @error('longitude') is-invalid @enderror"value="{{ $hotel['longitude'] }}">
                                 <span style="color: red; margin-left: 10px">
                                     @error('longitude')
                                     {{$message}}
@@ -44,7 +44,7 @@
                         <div class="row mt-3">
                             <div class="col-md-6">
                                 <label for="name">Entrer une Image de L'Hotel</label>
-                                <input type="file" name="image" value="{{ old('image') }}"  class="form-control @error('image') is-invalid @enderror">
+                                <input type="file" name="image" value="{{$hotel['image'] }}"  class="form-control @error('image') is-invalid @enderror">
                                 <span style="color: red; margin-left: 10px">
                                     @error('image')
                                     {{$message}}
@@ -53,7 +53,7 @@
                             </div>
                             <div class="col-md-6">
                                 <label for="name">Latitude</label>
-                                <input type="text" name="lattitude" value="{{ old('lattitude') }}"  class="form-control @error('longitude') is-invalid @enderror">
+                                <input type="text" name="lattitude" value="{{$hotel['lattitude'] }}"  class="form-control @error('longitude') is-invalid @enderror">
                                 <span style="color: red; margin-left: 10px">
                                     @error('lattitude')
                                     {{$message}}
@@ -64,8 +64,9 @@
 
                         <div class="row mt-3">
                             <div class="col-md-6">
+                                {{-- {{dd($adminNames)}} --}}
                                 <label for="">Selectionner le type D'Hotel</label>
-                                <select class="form-select @error('type') is-invalid @enderror" value="{{ old('type') }}" name="type" aria-label="Default select example">
+                                <select class="form-select @error('type') is-invalid @enderror" value="{{$hotel['type'] }}" name="type" aria-label="Default select example">
                                     <option selected>01 etoiles</option>
                                     <option value="1">02 etoiles</option>
                                     <option value="2">03 etoiles</option>
@@ -79,7 +80,7 @@
                             </div>
                             <div class="col-md-6">
                                 <label for="">Etat De L'Hotel</label>
-                                <select class="form-select @error('statut') is-invalid @enderror" value="{{ old('statut') }}" name="statut" aria-label="Default select example">
+                                <select class="form-select @error('statut') is-invalid @enderror" value="{{$hotel['statut'] }}" name="statut" aria-label="Default select example">
                                     <option value="1" selected>Active</option>
                                     <option value="0">Desactive</option>
                                 </select>
@@ -91,10 +92,10 @@
                             </div>
                         </div>
                         <div class="row mt-3">
-                            <select class="form-control @error('gerant_id') is-invalid @enderror" value="{{ old('gerant_id') }}" id="adminSelect" name="gerant_id" required>
+                            <select class="form-control @error('gerant_id') is-invalid @enderror" id="adminSelect" name="gerant_id" required>
                                 <option value="">Sélectionner le Gerand de l'hotel</option>
                                 @foreach ($adminNames as $id => $name)
-                                    <option value="{{ $id }}">{{ $name }}</option>
+                                    <option value="{{$id}}">{{ $name }}</option>
                                 @endforeach
                             </select>
                             <span style="color: red; margin-left: 10px">
@@ -106,7 +107,7 @@
                         <div class="row mt-3">
                             <div class="col-md-12">
                                 <label for="name">Ajouter une Description de L'Hotel</label>
-                                <input type="textarea" name="description" value="{{ old('description') }}" class="form-control @error('description') is-invalid @enderror">
+                                <input type="textarea" name="description" value="{{$hotel['description'] }}" class="form-control @error('description') is-invalid @enderror">
                             </div>
                             <span style="color: red; margin-left: 10px">
                                 @error('description')

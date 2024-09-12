@@ -21,27 +21,33 @@
                 <thead>
                   <tr>
                     <th scope="col">ID</th>
-                    <th scope="col">First</th>
-                    <th scope="col">Last</th>
-                    <th scope="col">First</th>
-                    <th scope="col">Last</th>
-                    <th scope="col">Actions</th>
+                    <th scope="col">Nom Site</th>
+                    <th scope="col"> Description</th>
+                    <th scope="col">Longitude</th>
+                    <th scope="col">Lattitude</th>
+                    <th scope="col" class="d-flex-end">Actions</th>
                   </tr>
                 </thead>
-                {{dd($sites)}}
                 @foreach ($sites as $site )
 
 
                     <tr>
-                        <th scope="row">{{$hotel['id']}}</th>
+                        <th scope="row">{{$site['id']}}</th>
                         <td>{{$site['name']}}</td>
-                        <td>{{$site['gerant_id']}}</td>
+                        <td>{{$site['description']}}</td>
                         <td>{{$site['longitude']}}</td>
                         <td>{{$site['lattitude']}}</td>
                         <td class="d-flex" >
-                            <a href="/admin//Voirsites/{{$site['id']}}" class="nav-link p-0 px-2"><i class="fa fa-eye" ></i></a>
-                            <a href="/admin/sites/{{$site['id']}}" class="nav-link p-0 px-2"><i class="fa fa-pen" ></i></a>
-                            <a href="/admin/sites/{{$hotel['id']}}" class="nav-link p-0 px-2"><i class="fa fa-trash-alt" ></i></a>
+                            {{-- <a href="/admin/Voirsites/{{$site['id']}}" class="nav-link p-0 px-2"><i class="fa fa-eye" ></i></a>
+                            <a href="/admin/sites/{{$site['id']}}" class="nav-link p-0 px-2"><i class="fa fa-pen" ></i></a> --}}
+
+                            <form action="" method="POST">
+                            @csrf
+                                <button class="btn btn-danger " type="submit"><i class="fa fa-trash-alt"></i> Supprimer</button>
+                            </form>
+
+                            <a class="btn ms-2" href="site/{{$site['id']}}/update" style="background-color: #291157; color:white;" >
+                                <i class="fas fa-pen"></i> Editer</a>
                         </td>
                     </tr>
                 @endforeach

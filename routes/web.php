@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\SiteController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\HotelController;
 use App\Http\Controllers\AdminUserController;
@@ -41,36 +42,41 @@ Route::get('/Historique', [UserController::class, 'historique'])->name('historiq
 Route::get('/Hotels', [UserController::class, 'Hotels'])->name('hotels');
 
 
-// Routes de l'Admin debut
+// // Routes de l'Admin debut
 
 
-    Route::group(['prefix'=>'admin', 'middleware' => 'admin_principal'], function(){
+    Route::group(['prefix'=>'admin', 'middleware' => 'admin_principal'], function(){//
 
         Route::get('/', [AdminController::class, 'dashboard'])->name('Admin');
 
+     // route Admin de l'hotel
         Route::get('/hotels', [HotelController::class, 'index'])-> name('Adminhotels');
 
         Route::get('/AjouterHotels', [HotelController::class, 'AjouterHotels'])-> name('AjouterHotels');
         Route::post('/Hotels', [HotelController::class, 'create'])-> name('AjoutHotels');
         Route::get('/Hotels/{id}', [HotelController::class, 'show']);
-        Route::put('/Hotels/{id}', [HotelController::class, 'update']);
-        Route::delete('/Hotels/{id}', [HotelController::class, 'destroy']);
+        Route::get('/Hotels/{id}', [HotelController::class, 'showupdate'])->name('GUpdateHotel');
+        Route::post('/Hotels/{id}', [HotelController::class, 'Postupdate'])->name('PostUpdateHotel');
+        Route::delete('/Hotels/{id}', [HotelController::class, 'destroy'])->name('DeltHotel');
 
 
-        //routes Admin du Site
-        Route::get('/Voirhotels', [SiteController::class, 'Voirhotels'])-> name('Voirhotels');
+    //routes Admin du Site
+        // Route::get('/Voirhotels', [AdminController::class, 'Voirhotels'])-> name('Voirhotels');
+        Route::get('site/{id}/update', [AdminController::class, 'ShowUpdate'])->name('SiteUpdate');
+        Route::get('/Site-touristiques', [AdminController::class, 'index'])->name('AdminSiteT');
+        Route::get('/AjouterSiteT', [AdminController::class, 'AjouterSiteT'])->name('AjouterSiteT');
+        Route::post('/AjouterSiteT/create', [AdminController::class, 'create'])->name('PostAddSiteT');
 
-        Route::get('/Site-touristiques', [SiteController::class, 'index'])-> name('AdminSiteT');
-        Route::get('/AjouterSiteT', [SiteController::class, 'AjouterSiteT'])-> name('AjouterSiteT');
-        Route::post('/AjouterSiteT', [SiteController::class, 'create'])-> name('PostAddSiteT');
 
-
-        //route users de l'admin
+    //route users de l'admin
         Route::get('/users', [AdminUserController::class, 'index'])-> name('users');
         Route::post('users/create', [AdminUserController::class, 'store'])-> name('PostAddUsers');
         Route::get('users/create', [AdminUserController::class, 'showform'])-> name('AddUsers');
+        Route::post('users/delete/{id}', [AdminUserController::class, 'destroy'])->name('UserDelt');
+
         //Route::get('users/{id}', [AdminUserController::class, 'show']);
+
         Route::get('users/{id}/update', [AdminUserController::class, 'ShowUpdate'])->name('UserUpdate');
-        Route::post('users/{{id}}', [AdminUserController::class, 'update'])->name('PostUserUpdate');
+        Route::post('post/users/{id}', [AdminUserController::class, 'update'])->name('PostUserUpdate');
         Route::post('users/{id}', [AdminUserController::class, 'destroy'])->name('UserDelt');
     });

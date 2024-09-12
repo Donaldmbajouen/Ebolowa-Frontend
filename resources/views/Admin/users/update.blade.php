@@ -9,7 +9,8 @@
 
             <div class="col mt-2">
                 <div class="col">
-                    <form action="{{route("PostUserUpdate, ['id'=>$users['id']]")}}" method="POST" class="p-4" enctype="multipart/form-data">
+                    {{-- {{dd($users)}} --}}
+                    <form action="{{route('PostUserUpdate',  ['id' => $users['id']])}}" method="POST" class="p-4" enctype="multipart/form-data">
                         @csrf
                         {{-- @method('PUT') --}}
                         <div class="row">
@@ -50,13 +51,9 @@
                             </div>
                             <div class="col-md-6 mb-2">
                                 <label for="name">Mot de Passe</label>
-                                <input type="password" required name="password"
-                                class="form-control @error('password') is-invalid @enderror"
-                                value="{{$users['name']}}">
-                                <span style="color: red">
-                                    @error('password')
-                                        {{$message}}
-                                    @enderror
+                                <input type="password"  disabled  required name="password"
+                                class="form-control"
+                                value="{{$users['phone_number']}}">
                             </div>
                         </div>
 

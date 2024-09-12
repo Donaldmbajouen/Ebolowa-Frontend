@@ -16,12 +16,10 @@ class AdminMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        // dd(Session::get('access_token'));
         // Vérifier si l'utilisateur est connecté et a un token
         if (session()->has('user') && session()->has('access_token')) {
             $user = session('user');
             // Vérifier si le rôle est admin
-            // dd($user['role']);
             if ($user['role'] === 'admin_principal') {
 
                 return $next($request);

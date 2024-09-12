@@ -62,10 +62,10 @@ class AdminUserController extends Controller
                 'password'=> $validateData['password'],
             ]);
             if ($response->successful()) {
-                return redirect('admin/users/create')->with('success', 'Hotel Enreistre avec succes');
+                return redirect('admin/users/create')->with('success', 'utilisateur Enreistre avec succes');
             }
             else{
-                return redirect('')->with('echec', 'Hotel Non Enreistre verifier puis recommencer');
+                return redirect('')->with('echec', 'utilisateur Non Enreistre verifier les champs puis recommencer');
             }
     }
 
@@ -97,7 +97,6 @@ class AdminUserController extends Controller
             'Accept' => 'application/json'])->withToken($token)->get("{$appUrl}/api/admin/users/{$id}");
             if ($response->successful()) {
                 $users = $response->json();
-                // dd($id);
                 // return redirect("admin/users/$id")->with('users', $users);
                 return view('Admin.users.update', compact('users'));
             }
@@ -110,11 +109,10 @@ class AdminUserController extends Controller
     {
         $appUrl= env('APP_URL');
         $token = session('access_token');
-        dd($request->all());
         $validateData = $request->validate([
             'name'=> 'required|string',
             'email' => 'required|email|unique:users,email',
-            'password' => 'required|string',
+            // 'password' => 'required|string',
             'role' => 'nullable',
             'phone_number' => 'required|string',
             'statut' => 'boolean',
@@ -123,13 +121,12 @@ class AdminUserController extends Controller
         $response=Http::withHeaders([
             'Content-Type' => 'application/json',
             'Accept' => 'application/json'])->withToken($token)->put("{$appUrl}/api/admin/users/$id", $request->all());
-            dd($id);
         if ($response->successful()) {
-            return redirect('admin/users')->with('modifier', 'Hotel Enreistre avec succes');
+            return redirect('admin/users')->with('modifier', 'utilisateur Modifier avec succes');
         }
         else{
             $users = $response->json();
-            return view('Admin.users.Users', compact('users'))->with('!modifier', 'Hotel Non Enreistre verifier puis recommencer');
+            return view('Admin.users.Users', compact('users'))->with('!modifier', 'utilisateur Non Enreistre verifier puis recommencer');
         }
     }
 
@@ -144,7 +141,8 @@ class AdminUserController extends Controller
         $response=Http::withToken($token)->delete("{$appUrl}/api/admin/users/$id");
         if ($response->successful()) {
             $usersdlt = $response->json();
-            return redirect()-> with('delete', "utilisateur desactive avec succes");
+
+            return redirect('admin/users')-> with('delete', "utilisateur desactive avec succes");
         }
     }
 }

@@ -4,6 +4,16 @@
 
 <div class="row mb-5">
     {{-- <div class="col-md-1"></div> --}}
+    @if (session('modifier'))
+        <span class="alert alert-success">
+            {{ session('modifier')}}
+        </span>
+    @endif
+    @if (session('delete'))
+        <div class="alert center alert-danger">
+            {{session('delete')}}
+        </div>
+    @endif
     <div class="col-md-11 ms-5 table-responsive p-3 centered shadow-lg " style="background-color: white; color:black;">
         <div class="row  p-3" style="background-color: #bcbbbe">
             <div class="ms-5  input_search">
@@ -43,29 +53,25 @@
                       <td> @if ($user['statut'] === 1)
                                 Actif
                             @else
-                                Desactive
+                                Inactif
                             @endif
                        </td>
 
                       <td class="d-flex" >
                           {{-- <a href="/users/{{$user['id']}}" class="nav-link p-0 px-2"><i class="fa fa-eye" ></i></a> --}}
-                          {{-- <form action="{{route('UserDelt', ['id' =>$user['id']])}}" method="POST">
+                          <form action="{{route('UserDelt', ['id' =>$user['id']])}}" method="POST">
                             @csrf
-                                <button class="btn btn-danger " type="submit"><i class="fa fa-trash-alt"></i> Supprimer</button>
-                            </form> --}}
+                                <button class="btn btn-danger" onclick="return confirm('Etes-vous sur de vouloir supprimer cet Utilisateur?')" type="submit"><i class="fa fa-trash-alt"></i> Supprimer</button>
+                            </form>
 
-                            <a class="btn ms-2" href="{{$user['id']}}/update" style="background-color: #291157; color:white;" >
+                            <a class="btn ms-2" href= "{{route('UserUpdate',  ['id' => $user['id']])}}" style="background-color: #291157; color:white;" >
                                 <i class="fas fa-pen"></i> Editer</a>
                       </td>
                   </tr>
 
                 @endforeach
             </table>
-            @if (session('delete'))
-                <div class="alert center alert-danger">
-                    {{session('delete')}}
-                </div>
-            @endif
+
         </div>
     </div>
     {{-- <div class="col-md-1"></div> --}}

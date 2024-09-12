@@ -53,12 +53,9 @@ class UserController extends Controller
             'email' => 'required|email',
             'password' => 'required',
         ]);
-
-
        $response = Http::post("{$appUrl}/api/login", [
            'email' => request('email'),
            'password' => request('password'),
-
        ]);
 
        if ($response->successful()) {
@@ -78,7 +75,6 @@ class UserController extends Controller
 
            return redirect('/'); // Rediriger vers la page d'accueil
        }
-
        return back()->withErrors(['email' => 'Invalid credentials']);
    }
 
@@ -93,22 +89,15 @@ class UserController extends Controller
            'password' => 'required|string',
            'phone_number' => 'required|string',
        ]);
-
-
-
        $response = Http::post("{$appUrl}/api/register", [
            'name' => $request->name,
            'phone_number' => $request->phone_number,
            'email' => $request->email,
            'password' => $request->password,
        ]);
-
-
        if ($response->successful()) {
-
            return redirect('login')->with('success', 'Compte cree avec succes! Veuillez vous connecter a votre Compte !');
        }
-
        $errors ='';
        return redirect('register')->with(['error', "email or password invalide"]);
    }

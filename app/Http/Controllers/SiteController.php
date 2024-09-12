@@ -14,58 +14,13 @@ class SiteController extends Controller
     public function hotels(){
         return view('Admin/Hotels/hotels');
     }
-    // public function SiteT(){
-    //     return view('Admin/SiteT/SiteT');
-    // }
-    public function AjouterSiteT(){
-        return view('Admin/SiteT/AjoutSiteT');
-    }
 
 
-    public function index(){
-        $appUrl= env('APP_URL');
-        $token = session('access_token');
-        $response = Http::withHeaders([
-            'Content-Type' => 'application/json',
-            'Accept' => 'application/json'])->withToken($token)->get("{$appUrl}/api/admin/SiteTouristique");
-        if($response->successful()){
-            $sites = $response->json();
-            dd($sites);
-            return view ('Admin/SiteT/SiteT', compact('sites'));
-        }
-        return("jinjifnduiguiueh");
-    }
 
-    public function create(Request $request){
 
-        $validateData = $request->validate([
-        'name'=> 'required|string',
-        'image' =>'required|image|mimes:jpeg,png,jpg,gif|max:2048',
-        'type' =>'integer|max:6',
-        'description'=> 'required|string',
-        'longitude'=> 'required|string',
-        'lattitude' => 'required|string',
-        'gerant_id' => 'required|exists:users,id',
-            'statut' => 'boolean'
-        ]);
 
-        $response = Http::post("{$appUrl}/api/admin/SiteTouristique/create", [
-        'name' => $validateData['name'],
-        'description' => $validateData['description'],
-        'type' => $validateData['type'],
-        'longitude' => $validateData['longitude'],
-        'lattitude' => $validateData['lattitude'],
-        'image' => $imagePath,
-        'gerant_id' => $validateData['gerant_id'],
-        'statut' => $validateData['statut'],
 
-        ]);
-
-        if ($response->successful()) {
-            return redirect('admin/AjouterSiteTouristiques')->with('statut' , 'SiteTouristique Enreistre avec succes');
-        }
-
-    }
+   
 
 
     public function show($id){
