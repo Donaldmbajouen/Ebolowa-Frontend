@@ -28,68 +28,23 @@
                     <th scope="col">Actions</th>
                   </tr>
                 </thead>
-                <tbody>
-                  <tr>
-                    <th scope="row">1</th>
-                      <td>Mark</td>
-                      <td>Otto</td>
-                      <td>Mark</td>
-                      <td>Mark</td>
-                      <td class="d-flex" >
-                          <a class="nav-link p-0 px-2"><i class="fa fa-eye" ></i></a>
-                          <a class="nav-link p-0 px-2"><i class="fa fa-pen" ></i></a>
-                          <a class="nav-link p-0 px-2"><i class="fa fa-trash-alt" ></i></a>
-                      </td>
-                  </tr>
-                  <tr>
-                    <th scope="row">2</th>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>@fat</td>
-                    <td>Jacob</td>
-                      <td class="d-flex" >
-                          <a class="nav-link p-0 px-2"><i class="fa fa-eye" ></i></a>
-                          <a class="nav-link p-0 px-2"><i class="fa fa-pen" ></i></a>
-                          <a class="nav-link p-0 px-2"><i class="fa fa-trash-alt" ></i></a>
-                      </td>
-                  </tr>
-                  <tr>
-                    <th scope="row">3</th>
-                    <td>Larry the Bird</td>
-                    <td>@twitter</td>
-                    <td>@twitter</td>
-                    <td>@twitter</td>
-                      <td class="d-flex" >
-                          <a class="nav-link p-0 px-2"><i class="fa fa-eye" ></i></a>
-                          <a class="nav-link p-0 px-2"><i class="fa fa-pen" ></i></a>
-                          <a class="nav-link p-0 px-2"><i class="fa fa-trash-alt" ></i></a>
-                      </td>
-                  </tr>
-                  <tr>
-                      <th scope="row">4</th>
-                      <td>Larry the Bird</td>
-                      <td>@twitter</td>
-                      <td>@twitter</td>
-                      <td>@twitter</td>
-                      <td class="d-flex" >
-                          <a class="nav-link p-0 px-2"><i class="fa fa-eye" ></i></a>
-                          <a class="nav-link p-0 px-2"><i class="fa fa-pen" ></i></a>
-                          <a class="nav-link p-0 px-2"><i class="fa fa-trash-alt" ></i></a>
-                      </td>
-                  </tr>
-                  <tr>
-                      <th scope="row">5</th>
-                      <td>Larry the Bird</td>
-                      <td>@twitter</td>
-                      <td>@twitter</td>
-                      <td>@twitter</td>
-                      <td class="d-flex" >
-                          <a class="nav-link p-0 px-2"><i class="fa fa-eye" ></i></a>
-                          <a class="nav-link p-0 px-2"><i class="fa fa-pen" ></i></a>
-                          <a class="nav-link p-0 px-2"><i class="fa fa-trash-alt" ></i></a>
-                      </td>
-                  </tr>
-                </tbody>
+                {{dd($sites)}}
+                @foreach ($sites as $site )
+
+
+                    <tr>
+                        <th scope="row">{{$hotel['id']}}</th>
+                        <td>{{$site['name']}}</td>
+                        <td>{{$site['gerant_id']}}</td>
+                        <td>{{$site['longitude']}}</td>
+                        <td>{{$site['lattitude']}}</td>
+                        <td class="d-flex" >
+                            <a href="/admin//Voirsites/{{$site['id']}}" class="nav-link p-0 px-2"><i class="fa fa-eye" ></i></a>
+                            <a href="/admin/sites/{{$site['id']}}" class="nav-link p-0 px-2"><i class="fa fa-pen" ></i></a>
+                            <a href="/admin/sites/{{$hotel['id']}}" class="nav-link p-0 px-2"><i class="fa fa-trash-alt" ></i></a>
+                        </td>
+                    </tr>
+                @endforeach
             </table>
         </div>
     </div>

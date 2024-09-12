@@ -1,0 +1,23 @@
+ce qui reste a faire sur l'App Ebolowa:
+-page single pour les chambres
+-
+-filtre de recherche des chambres, pieces, appartement
+-
+-check de l'aviabilite des hotels/et/structures
+-
+-page de reservation de visite et de chambre
+
+-
+-
+-cote geolocalisation rien nest encore gere
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-

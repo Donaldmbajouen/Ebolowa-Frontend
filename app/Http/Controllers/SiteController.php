@@ -3,9 +3,39 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 
 class SiteController extends Controller
 {
+
+    public function dashboard(){
+        return view('Admin/dashboard');
+    }
+    public function hotels(){
+        return view('Admin/Hotels/hotels');
+    }
+    // public function SiteT(){
+    //     return view('Admin/SiteT/SiteT');
+    // }
+    public function AjouterSiteT(){
+        return view('Admin/SiteT/AjoutSiteT');
+    }
+
+
+    public function index(){
+        $appUrl= env('APP_URL');
+        $token = session('access_token');
+        $response = Http::withHeaders([
+            'Content-Type' => 'application/json',
+            'Accept' => 'application/json'])->withToken($token)->get("{$appUrl}/api/admin/SiteTouristique");
+        if($response->successful()){
+            $sites = $response->json();
+            dd($sites);
+            return view ('Admin/SiteT/SiteT', compact('sites'));
+        }
+        return("jinjifnduiguiueh");
+    }
+
     public function create(Request $request){
 
         $validateData = $request->validate([
@@ -36,6 +66,7 @@ class SiteController extends Controller
         }
 
     }
+
 
     public function show($id){
         return view('Admin.SiteTouristiques.SeeSiteTouristique');

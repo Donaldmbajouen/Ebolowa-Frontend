@@ -12,12 +12,7 @@ class AdminController extends Controller
     public function hotels(){
         return view('Admin/Hotels/hotels');
     }
-    public function SiteT(){
-        return view('Admin/SiteT/SiteT');
-    }
-    public function AjouterSiteT(){
-        return view('Admin/SiteT/AjoutSiteT');
-    }
+
 
 
 

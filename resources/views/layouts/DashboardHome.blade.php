@@ -96,8 +96,8 @@
                 </a>
                 <div id="collapsewo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="{{  route('AdminSiteT')}}">Utilisateurs</a>
-                        <a class="collapse-item" href="{{  route('AdminSiteT')}}">Statistiques</a>
+                        <a class="collapse-item" href="{{  route('users')}}">Utilisateurs</a>
+                        <a class="collapse-item" href="">Statistiques</a>
                     </div>
                 </div>
             </li>

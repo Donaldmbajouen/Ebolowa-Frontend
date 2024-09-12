@@ -23,75 +23,31 @@
                 <thead>
                   <tr>
                     <th scope="col">ID</th>
-                    <th scope="col">First</th>
-                    <th scope="col">Last</th>
-                    <th scope="col">First</th>
-                    <th scope="col">Last</th>
+                    <th scope="col">Nom</th>
+                    <th scope="col">Gerant</th>
+                    <th scope="col">Longitude</th>
+                    <th scope="col">Lattitude</th>
                     <th scope="col">Actions</th>
                   </tr>
                 </thead>
-                <tbody>
-                  <tr>
-                    <th scope="row">1</th>
-                      <td>Mark</td>
-                      <td>Otto</td>
-                      <td>Mark</td>
-                      <td>Mark</td>
-                      <td class="d-flex" >
-                          <a href="{{route('Voirhotels')}}" class="nav-link p-0 px-2"><i class="fa fa-eye" ></i></a>
-                          <a class="nav-link p-0 px-2"><i class="fa fa-pen" ></i></a>
-                          <a class="nav-link p-0 px-2"><i class="fa fa-trash-alt" ></i></a>
-                      </td>
-                  </tr>
-                  <tr>
-                    <th scope="row">2</th>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>@fat</td>
-                    <td>Jacob</td>
-                      <td class="d-flex" >
-                          <a href="{{route('Voirhotels')}}" class="nav-link p-0 px-2"><i class="fa fa-eye" ></i></a>
-                          <a class="nav-link p-0 px-2"><i class="fa fa-pen" ></i></a>
-                          <a class="nav-link p-0 px-2"><i class="fa fa-trash-alt" ></i></a>
-                      </td>
-                  </tr>
-                  <tr>
-                    <th scope="row">3</th>
-                    <td>Larry the Bird</td>
-                    <td>@twitter</td>
-                    <td>@twitter</td>
-                    <td>@twitter</td>
-                      <td class="d-flex" >
-                          <a href="{{route('Voirhotels')}}" class="nav-link p-0 px-2"><i class="fa fa-eye" ></i></a>
-                          <a class="nav-link p-0 px-2"><i class="fa fa-pen" ></i></a>
-                          <a class="nav-link p-0 px-2"><i class="fa fa-trash-alt" ></i></a>
-                      </td>
-                  </tr>
-                  <tr>
-                      <th scope="row">4</th>
-                      <td>Larry the Bird</td>
-                      <td>@twitter</td>
-                      <td>@twitter</td>
-                      <td>@twitter</td>
-                      <td class="d-flex" >
-                          <a href="{{route('Voirhotels')}}" class="nav-link p-0 px-2"><i class="fa fa-eye" ></i></a>
-                          <a class="nav-link p-0 px-2"><i class="fa fa-pen" ></i></a>
-                          <a class="nav-link p-0 px-2"><i class="fa fa-trash-alt" ></i></a>
-                      </td>
-                  </tr>
-                  <tr>
-                      <th scope="row">5</th>
-                      <td>Larry the Bird</td>
-                      <td>@twitter</td>
-                      <td>@twitter</td>
-                      <td>@twitter</td>
-                      <td class="d-flex" >
-                          <a href="{{route('Voirhotels')}}" class="nav-link p-0 px-2"><i class="fa fa-eye" ></i></a>
-                          <a class="nav-link p-0 px-2"><i class="fa fa-pen" ></i></a>
-                          <a class="nav-link p-0 px-2"><i class="fa fa-trash-alt" ></i></a>
-                      </td>
-                  </tr>
-                </tbody>
+
+                @foreach ($hotels as $hotel )
+
+
+                    <tbody>
+                    <tr>
+                        <th scope="row">{{$hotel['id']}}</th>
+                        <td>{{$hotel['name']}}</td>
+                        <td>{{$hotel['gerant_id']}}</td>
+                        <td>{{$hotel['longitude']}}</td>
+                        <td>{{$hotel['lattitude']}}</td>
+                        <td class="d-flex" >
+                            <a href="/admin//Voirhotels/{{$hotel['id']}}" class="nav-link p-0 px-2"><i class="fa fa-eye" ></i></a>
+                            <a href="/admin/Hotels/{{$hotel['id']}}" class="nav-link p-0 px-2"><i class="fa fa-pen" ></i></a>
+                            <a href="/admin/Hotels/{{$hotel['id']}}" class="nav-link p-0 px-2"><i class="fa fa-trash-alt" ></i></a>
+                        </td>
+                    </tr>
+                @endforeach
             </table>
         </div>
     </div>

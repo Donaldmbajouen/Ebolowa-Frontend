@@ -27,9 +27,19 @@ class HotelController extends Controller
         return view('Admin/Hotels/AjoutHotel',  ['adminNames' => $adminNames]);
         // return view('Admin/Hotels/AjoutHotel');
     }
-    public function hotels(){
-        return view('Admin/Hotels/hotels');
+    public function index(){
+        $appUrl= env('APP_URL');
+        $token = session('access_token');
+        $response = Http::withHeaders([
+            'Content-Type' => 'application/json',
+            'Accept' => 'application/json'])->withToken($token)->get("{$appUrl}/api/admin/hotel");
+        if($response->successful()){
+            $hotels = $response->json();
+            // dd($hotels);
+            return view ('Admin/Hotels/hotels', compact('hotels'));
+        }
     }
+
 
     public function create(Request $request){
         $appUrl= env('APP_URL');
@@ -71,7 +81,10 @@ class HotelController extends Controller
     }
 
     public function show($id){
-        return view('Admin.Hotels.SeeHotel');
+        $response = Http::withToken($token)->get("{$appUrl}/api/admin/hotel/{id}");
+        dd($response);
+        $hotels= new Hotel();
+        return view('Admin.Hotels.hotels', compact('hotels'));
     }
 
 
@@ -101,24 +114,9 @@ class HotelController extends Controller
 
     }
 
-    // public function destroy($id){
-    //     // $hotel->statut = 0;
-    // }
-    // public function userfiltre(){
-    //     // Appeler l'API pour récupérer les noms des admins secondaires
-    //     $response = Http::get('http://127.0.0.1:8000/api/admin/user/filtre');
-    //     dd($response->json());
-    //     $adminNames = [];
-
-    //     // Vérifiez si la requête a réussi
-    //     if ($response->successful()) {
-    //         $adminNames = $response->json(); // Récupérer les noms sous forme de tableau associatif
-    //     } else {
-    //         $adminNames = []; // Aucun admin trouvé
-    //     }
-    //     // dd($adminNames);
-
-    //     return view('Admin/Hotels/AjoutHotel',  ['adminNames' => $adminNames]);
+    public function destroy($id){
+        // $hotel->statut = 0;
+    }
 
 
 
