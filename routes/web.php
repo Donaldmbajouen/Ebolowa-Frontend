@@ -72,7 +72,7 @@ Route::post('logout',[UserController::class,'logout'])->name('logout')
         Route::get('/site-touristique/{id}', [AdminController::class, 'show'])->name('show_site');
 
 
-    //route users de l'admin
+    //route users de l'admingit branch
         Route::get('/users', [AdminUserController::class, 'index'])-> name('users');
         Route::post('users/create', [AdminUserController::class, 'store'])-> name('PostAddUsers');
         Route::get('users/create', [AdminUserController::class, 'showform'])-> name('AddUsers');
