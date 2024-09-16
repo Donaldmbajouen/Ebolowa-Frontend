@@ -6,6 +6,7 @@ use App\Http\Controllers\SiteController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\HotelController;
 use App\Http\Controllers\AdminUserController;
+use App\Http\Controllers\AdminHotelController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,11 +36,13 @@ Route::post('logout',[UserController::class,'logout'])->name('logout')
 
 // Routes de l'utilisateur simple
 
-Route::get('/', [UserController::class, 'main_user'])->name('accueil');
-Route::get('/Site_touristique', [UserController::class, 'site_touristique'])->name('site_touristique');
-Route::get('/Reserver_site_touristique', [UserController::class, 'reserver_site_touristique'])->name('reserver_une_visite');
-Route::get('/Historique', [UserController::class, 'historique'])->name('historique');
-Route::get('/Hotels', [UserController::class, 'Hotels'])->name('hotels');
+    Route::get('/', [UserController::class, 'main_user'])->name('accueil');
+    Route::get('/Site_touristique', [UserController::class, 'site_touristique'])->name('site_touristique');
+    Route::get('/Reserver_site_touristique', [UserController::class, 'reserver_site_touristique'])->name('reserver_une_visite');
+    Route::get('/Historique', [UserController::class, 'historique'])->name('historique');
+    Route::get('/Hotels', [UserController::class, 'Hotels'])->name('hotels');
+    Route::get('/reservation', [UserController::class, 'reservation'])->name('reservation');
+
 
 
 // // Routes de l'Admin debut
@@ -54,7 +57,7 @@ Route::get('/Hotels', [UserController::class, 'Hotels'])->name('hotels');
 
         Route::get('/AjouterHotels', [HotelController::class, 'AjouterHotels'])-> name('AjouterHotels');
         Route::post('/Hotels', [HotelController::class, 'create'])-> name('AjoutHotels');
-        Route::get('/Hotels/{id}', [HotelController::class, 'show']);
+        Route::get('/Hotels/{id}/show', [HotelController::class, 'show'])->name('HotelShow');
         Route::get('/Hotels/{id}', [HotelController::class, 'showupdate'])->name('GUpdateHotel');
         Route::post('/Hotels/{id}', [HotelController::class, 'Postupdate'])->name('PostUpdateHotel');
         Route::delete('/Hotels/{id}', [HotelController::class, 'destroy'])->name('DeltHotel');
@@ -66,6 +69,7 @@ Route::get('/Hotels', [UserController::class, 'Hotels'])->name('hotels');
         Route::get('/Site-touristiques', [AdminController::class, 'index'])->name('AdminSiteT');
         Route::get('/AjouterSiteT', [AdminController::class, 'AjouterSiteT'])->name('AjouterSiteT');
         Route::post('/AjouterSiteT/create', [AdminController::class, 'create'])->name('PostAddSiteT');
+        Route::get('/site-touristique/{id}', [AdminController::class, 'show'])->name('show_site');
 
 
     //route users de l'admin
@@ -78,5 +82,16 @@ Route::get('/Hotels', [UserController::class, 'Hotels'])->name('hotels');
 
         Route::get('users/{id}/update', [AdminUserController::class, 'ShowUpdate'])->name('UserUpdate');
         Route::post('post/users/{id}', [AdminUserController::class, 'update'])->name('PostUserUpdate');
-        Route::post('users/{id}', [AdminUserController::class, 'destroy'])->name('UserDelt');
+        // Route::post('users/{id}', [AdminUserController::class, 'destroy'])->name('UserDelt');
     });
+
+//Routes de l'Admin hotels
+Route::group(['prefix'=>'admin-secondaire', 'middleware' => 'admin_principal'], function(){
+    Route::get('hotels', [AdminHotelController::class, 'index'])->name('AdminHotel');
+
+
+});
+
+
+//Routes de l'Admin Site touristique
+

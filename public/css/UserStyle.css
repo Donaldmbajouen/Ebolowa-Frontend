@@ -556,4 +556,8 @@ body{
 .is-invalid{
     border: 1px solid red;
 }
+.btn-icon i{
+    outline: none;
+    border: none;
+}
 

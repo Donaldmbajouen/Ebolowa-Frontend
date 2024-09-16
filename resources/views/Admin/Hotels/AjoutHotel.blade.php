@@ -85,7 +85,7 @@
                                 </select>
                                 <span style="color: red; margin-left: 10px">
                                     @error('name')
-                                    {{$message}}
+                                        {{$message}}
                                     @enderror
                                 </span>
                             </div>

@@ -8,7 +8,7 @@
             <h2>Ajouter un Site Touristique</h2>
             <div class="col mt-2">
                 <div class="col">
-                    <form action="{{route('PostAddSiteT')}}" method="POST" class="p-4" >
+                    <form action="{{route('PostAddSiteT')}}" method="POST" class="p-4" enctype="multipart/form-data">
                         @csrf
                         <div class="row">
                             <div class="col-md-6 mb-2">
@@ -16,7 +16,7 @@
                                 <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" value="{{ old('name') }}">
                                 <span style="color: red; margin-left: 10px">
                                     @error('name')
-                                    {{$message}}
+                                        {{$message}}
                                     @enderror
                                 </span>
                             </div>
@@ -25,7 +25,7 @@
                                 <input type="text" name="longitude" class="form-control @error('longitude') is-invalid @enderror"value="{{ old('longitude') }}">
                                 <span style="color: red; margin-left: 10px">
                                     @error('longitude')
-                                    {{$message}}
+                                        {{$message}}
                                     @enderror
                                 </span>
                             </div>
@@ -34,15 +34,15 @@
                         <div class="row mt-3">
                             <div class="col-md-6">
                                 <label for="name">Selectionner le Gerant</label>
-                                <select class="form-control @error('gerant_id') is-invalid @enderror"value="{{ old('gerant_id') }}" name="gerant_id"  aria-label="Default select example">
-                                    <option value="" selected>selectionner le Nom Gerant</option>
+                                <select class="form-control @error('gerant_id') is-invalid @enderror" value="{{ old('gerant_id') }}" id="adminSelect" name="gerant_id" required>
+                                    <option value="">Sélectionner le Gerand de l'hotel</option>
                                     @foreach ($adminNames as $id => $name)
                                         <option value="{{ $id }}">{{ $name }}</option>
                                     @endforeach
                                 </select>
                                 <span style="color: red; margin-left: 10px; margin-bottom:0px;">
                                     @error('gerant_id')
-                                    {{$message}}
+                                        {{$message}}
                                     @enderror
                                 </span>
                             </div>
@@ -51,7 +51,7 @@
                                 <input type="text" name="lattitude" class="form-control @error('lattitude') is-invalid @enderror"value="{{ old('lattitude') }}">
                                 <span style="color: red; margin-left: 10px">
                                     @error('lattitude')
-                                    {{$message}}
+                                        {{$message}}
                                     @enderror
                                 </span>
                             </div>
@@ -59,32 +59,24 @@
 
                         <div class="row mt-3">
                             <div class="col-md-6 mb-2">
-                                <label for="">Selectionner le type  de Site Touristique</label>
-                                <select class="form-select" name="type" aria-label="Default select example">
-                                    <option selected>jardin</option>
-                                    <option value="zoo">zoo</option>
-                                    <option value="etoiles">etoiles</option>
-                                    <option value="etoiles">etoiles</option>
-                                </select>
+
                             </div>
                             <div class="col-md-6 mb-2">
                                 <label for="">Etat du Site Touristique</label>
-                                <select class="form-select" aria-label="Default select example">
+                                <select class="form-select" aria-label="Default select example" name="statut">
                                     <option value="1" selected>Active</option>
                                     <option value="0">Desactive</option>
                                 </select>
-                                {{-- @foreach ($adminNames as $id => $name)
-                                    <option value="{{ $id }}">{{ $name }}</option>
-                                @endforeach --}}
+
                             </div>
                         </div>
                         <div class="row mt-3">
                             <div class="col-md-12 mb-2">
                                 <label for="name">Entrer une Image de du Site Touristique</label>
-                                <input type="file" name="longitude" class="form-control @error('longitude') is-invalid @enderror"value="{{ old('longitude') }}">
+                                <input type="file" name="image" class="form-control @error('longitude') is-invalid @enderror"value="{{ old('longitude') }}">
                                 <span style="color: red; margin-left: 10px">
-                                    @error('longitude')
-                                    {{$message}}
+                                    @error('image')
+                                        {{$message}}
                                     @enderror
                                 </span>
                             </div>
@@ -92,10 +84,10 @@
                         <div class="row mt-3 ">
                             <div class="col-md-12">
                                 <label for="name">Ajouter une Description de du Site Touristique</label>
-                                <input type="textarea" class="form-control @error('description') is-invalid @enderror" value="{{ old('description') }}">
+                                <input type="textarea" name="description" class="form-control @error('description') is-invalid @enderror" value="{{ old('description') }}">
                                 <span style="color: red; margin-left: 10px">
                                     @error('description')
-                                    {{$message}}
+                                        {{$message}}
                                     @enderror
                                 </span>
                             </div>

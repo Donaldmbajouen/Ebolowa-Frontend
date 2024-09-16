@@ -37,6 +37,9 @@
                 <div class="col-sm-8">
                     <ul class="navbar-nav ms-5  mb-2 mb-sm-0">
                         <li class="nav-item">
+                            <a class="nav-link me-2" style="color: rgb(14, 10, 74); text-decoration:underline;" href="{{route('accueil')}}">Accueil</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link me-2" style="color: rgb(14, 10, 74);"  href="{{route('historique')}}">Histoire</a>
                         </li>
                         <li class="nav-item">
@@ -44,6 +47,9 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link me-2" style="color: rgb(14, 10, 74);" href="{{route('hotels')}}">Hotels</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link me-2" style="color: rgb(14, 10, 74);" href="#">Gallerie</a>
                         </li>
                     </ul>
                 </div>

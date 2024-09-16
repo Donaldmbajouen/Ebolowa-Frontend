@@ -153,7 +153,11 @@
                   </div>
                 <div class="col-md-8">
                     <div class="card-body">
-                        <h4 class="mb-1">Lakeside Motel Warefront</h4>
+                        <h4 class="mb-1">Lakeside Motel Warefront
+                            <button class="btn btn-icon" style="outline:none; border:none;">
+                                <i class="fas fa-map-marker-alt"style="color: red;font-size:30px; margin-left:120px;"></i>
+                            </button>
+                        </h4>
                         <div>
                             <p>
                                 <i class="fa fa-star" style="color: rgb(238, 141, 15)"></i>
@@ -162,11 +166,13 @@
                                 <i class="fa fa-star" style="color: rgb(238, 141, 15)"></i>
                                 <i class="fa fa-star" style="color: rgb(3, 3, 2)"></i>
                                 <span>4.5 (1200 Reviews)</span>
+
+
                             </p>
 
                             <div class="d-flex justify-content-md-between">
                                 <p class="card-text"><small class="text-body-secondary"> in gravida nulla. Nulla vel metus scelerisque <br> ante sollicitudin. Cras purus odio,</small><br>
-                                    <a href="#" class="btn bn-lg btn-primary py-2 mt-3">Voir la Disponibilite</a>
+                                    <a href="{{route('reservation')}}" class="btn bn-lg btn-primary py-2 mt-1">Reserver Maintenant</a>
                                 </p>
 
                                 <p class="">
@@ -188,7 +194,11 @@
                   </div>
                 <div class="col-md-8">
                     <div class="card-body">
-                        <h4 class="mb-1">Lakeside Motel Warefront</h4>
+                        <h4 class="mb-1">Lakeside Motel Warefront
+                            <button class="btn btn-icon" style="outline:none; border:none;">
+                                <i class="fas fa-map-marker-alt"style="color: red;font-size:30px; margin-left:120px;"></i>
+                            </button>
+                        </h4>
                         <div>
                             <p>
                                 <i class="fa fa-star" style="color: rgb(238, 141, 15)"></i>
@@ -201,7 +211,7 @@
 
                             <div class="d-flex justify-content-md-between">
                                 <p class="card-text"><small class="text-body-secondary"> in gravida nulla. Nulla vel metus scelerisque <br> ante sollicitudin. Cras purus odio,</small><br>
-                                    <a href="#" class="btn bn-lg btn-primary py-2 mt-3">Voir la Disponibilite</a>
+                                    <a href="{{route('reservation')}}" class="btn bn-lg btn-primary py-2 mt-1">Reserver Maintenant</a>
                                 </p>
 
                                 <p class="">
@@ -223,7 +233,11 @@
                   </div>
                 <div class="col-md-8">
                     <div class="card-body">
-                        <h4 class="mb-1">Lakeside Motel Warefront</h4>
+                        <h4 class="mb-1">Lakeside Motel Warefront
+                            <button class="btn btn-icon" style="outline:none; border:none;">
+                                <i class="fas fa-map-marker-alt"style="color: red;font-size:30px; margin-left:120px;"></i>
+                            </button>
+                        </h4>
                         <div>
                             <p>
                                 <i class="fa fa-star" style="color: rgb(238, 141, 15)"></i>
@@ -236,7 +250,7 @@
 
                             <div class="d-flex justify-content-md-between">
                                 <p class="card-text"><small class="text-body-secondary"> in gravida nulla. Nulla vel metus scelerisque <br> ante sollicitudin. Cras purus odio,</small><br>
-                                    <a href="#" class="btn bn-lg btn-primary py-2 mt-3">Voir la Disponibilite</a>
+                                    <a href="{{route('reservation')}}" class="btn bn-lg btn-primary py-2 mt-1">Reserver Maintenant</a>
                                 </p>
 
                                 <p class="">
@@ -258,7 +272,11 @@
                   </div>
                 <div class="col-md-8">
                     <div class="card-body">
-                        <h4 class="mb-1">Lakeside Motel Warefront</h4>
+                        <h4 class="mb-1">Lakeside Motel Warefront
+                            <button class="btn btn-icon" style="outline:none; border:none;">
+                                <i class="fas fa-map-marker-alt"style="color: red;font-size:30px; margin-left:120px;"></i>
+                            </button>
+                        </h4>
                         <div>
                             <p>
                                 <i class="fa fa-star" style="color: rgb(238, 141, 15)"></i>
@@ -271,7 +289,7 @@
 
                             <div class="d-flex justify-content-md-between">
                                 <p class="card-text"><small class="text-body-secondary"> in gravida nulla. Nulla vel metus scelerisque <br> ante sollicitudin. Cras purus odio,</small><br>
-                                    <a href="#" class="btn bn-lg btn-primary py-2 mt-3">Voir la Disponibilite</a>
+                                    <a href="{{route('reservation')}}" class="btn bn-lg btn-primary py-2 mt-1">Reserver Maintenant</a>
                                 </p>
 
                                 <p class="">
@@ -293,7 +311,11 @@
                   </div>
                 <div class="col-md-8">
                     <div class="card-body">
-                        <h4 class="mb-1">Lakeside Motel Warefront</h4>
+                        <h4 class="mb-1">Lakeside Motel Warefront
+                            <button class="btn btn-icon" style="outline:none; border:none;">
+                                <i class="fas fa-map-marker-alt"style="color: red;font-size:30px; margin-left:120px;"></i>
+                            </button>
+                        </h4>
                         <div>
                             <p>
                                 <i class="fa fa-star" style="color: rgb(238, 141, 15)"></i>
@@ -306,7 +328,7 @@
 
                             <div class="d-flex justify-content-md-between">
                                 <p class="card-text"><small class="text-body-secondary"> in gravida nulla. Nulla vel metus scelerisque <br> ante sollicitudin. Cras purus odio,</small><br>
-                                    <a href="#" class="btn bn-lg btn-primary py-2 mt-3">Voir la Disponibilite</a>
+                                    <a href="{{route('reservation')}}" class="btn bn-lg btn-primary py-2 mt-1">Reserver Maintenant</a>
                                 </p>
 
                                 <p class="">
@@ -328,7 +350,11 @@
                   </div>
                 <div class="col-md-8">
                     <div class="card-body">
-                        <h4 class="mb-1">Lakeside Motel Warefront</h4>
+                        <h4 class="mb-1">Lakeside Motel Warefront
+                            <button class="btn btn-icon" style="outline:none; border:none;">
+                                <i class="fas fa-map-marker-alt"style="color: red;font-size:30px; margin-left:120px;"></i>
+                            </button>
+                        </h4>
                         <div>
                             <p>
                                 <i class="fa fa-star" style="color: rgb(238, 141, 15)"></i>
@@ -341,7 +367,7 @@
 
                             <div class="d-flex justify-content-md-between">
                                 <p class="card-text"><small class="text-body-secondary"> in gravida nulla. Nulla vel metus scelerisque <br> ante sollicitudin. Cras purus odio,</small><br>
-                                    <a href="#" class="btn bn-lg btn-primary py-2 mt-3">Voir la Disponibilite</a>
+                                    <a href="{{route('reservation')}}" class="btn bn-lg btn-primary py-2 mt-1">Reserver Maintenant</a>
                                 </p>
 
                                 <p class="">
@@ -363,7 +389,11 @@
                   </div>
                 <div class="col-md-8">
                     <div class="card-body">
-                        <h4 class="mb-1">Lakeside Motel Warefront</h4>
+                        <h4 class="mb-1">Lakeside Motel Warefront
+                            <button class="btn btn-icon" style="outline:none; border:none;">
+                                <i class="fas fa-map-marker-alt"style="color: red;font-size:30px; margin-left:120px;"></i>
+                            </button>
+                        </h4>
                         <div>
                             <p>
                                 <i class="fa fa-star" style="color: rgb(238, 141, 15)"></i>
@@ -376,7 +406,7 @@
 
                             <div class="d-flex justify-content-md-between">
                                 <p class="card-text"><small class="text-body-secondary"> in gravida nulla. Nulla vel metus scelerisque <br> ante sollicitudin. Cras purus odio,</small><br>
-                                    <a href="#" class="btn bn-lg btn-primary py-2 mt-3">Voir la Disponibilite</a>
+                                    <a href="{{route('reservation')}}" class="btn bn-lg btn-primary py-2 mt-1">Reserver Maintenant</a>
                                 </p>
 
                                 <p class="">

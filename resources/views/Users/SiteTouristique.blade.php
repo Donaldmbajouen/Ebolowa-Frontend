@@ -38,7 +38,9 @@
             <div class="card">
                 <img src="{{ asset('img/UserImages/hotel1.png')}}" class="card-img-top" alt="...">
                 <div class="card-body">
-                    <h3>Hotel Bengo</h3>
+                    <h3>Hotel Bengo <button class="btn btn-icon" style="outline:none; border:none;">
+                        <i class="fas fa-map-marker-alt"style="color: red;font-size:40px; margin-left:120px;"></i></button>
+                    </h3>
                     <p>RUE AMBASSADE DE RUSSIE, Nkol Eton</p>
                     <p class="btn btn-warning"><i class="fa fa-star"></i> 4.9k Vues</p>
                     <div class="cardfooter">
@@ -52,8 +54,9 @@
             <div class="card">
                 <img src="{{ asset('img/UserImages/hotel1.png')}}" class="card-img-top" alt="...">
                 <div class="card-body">
-                    <h3>Hotel Bengo</h3>
-                    <p>RUE AMBASSADE DE RUSSIE, Nkol Eton</p>
+                    <h3>Hotel Bengo <button class="btn btn-icon" style="outline:none; border:none;">
+                        <i class="fas fa-map-marker-alt"style="color: red;font-size:40px; margin-left:120px;"></i></button>
+                    </h3>
                     <p class="btn btn-warning"><i class="fa fa-star"></i> 4.9k Vues</p>
                     <div class="cardfooter">
                         <p>XAF 200,000</p>
@@ -66,53 +69,9 @@
             <div class="card">
                 <img src="{{ asset('img/UserImages/hotel1.png')}}" class="card-img-top" alt="...">
                 <div class="card-body">
-                    <h3>Hotel Bengo</h3>
-                    <p>RUE AMBASSADE DE RUSSIE, Nkol Eton</p>
-                    <p class="btn btn-warning"><i class="fa fa-star"></i> 4.9k Vues</p>
-                    <div class="cardfooter">
-                        <p>XAF 200,000</p>
-                        <span>par Adulte</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </div>
-    <div class="row">
-        <div class="col-sm-6 col-lg-4 mb-4">
-            <div class="card">
-                <img src="{{ asset('img/UserImages/hotel1.png')}}" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h3>Hotel Bengo</h3>
-                    <p>RUE AMBASSADE DE RUSSIE, Nkol Eton</p>
-                    <p class="btn btn-warning"><i class="fa fa-star"></i> 4.9k Vues</p>
-                    <div class="cardfooter">
-                        <p>XAF 200,000</p>
-                        <span>par Adulte</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-6 col-lg-4 mb-4">
-            <div class="card">
-                <img src="{{ asset('img/UserImages/hotel1.png')}}" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h3>Hotel Bengo</h3>
-                    <p>RUE AMBASSADE DE RUSSIE, Nkol Eton</p>
-                    <p class="btn btn-warning"><i class="fa fa-star"></i> 4.9k Vues</p>
-                    <div class="cardfooter">
-                        <p>XAF 200,000</p>
-                        <span>par Adulte</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-6 col-lg-4 mb-4">
-            <div class="card">
-                <img src="{{ asset('img/UserImages/hotel1.png')}}" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h3>Hotel Bengo</h3>
-                    <p>RUE AMBASSADE DE RUSSIE, Nkol Eton</p>
+                    <h3>Hotel Bengo <button class="btn btn-icon" style="outline:none; border:none;">
+                        <i class="fas fa-map-marker-alt"style="color: red;font-size:40px; margin-left:120px;"></i></button>
+                    </h3>
                     <p class="btn btn-warning"><i class="fa fa-star"></i> 4.9k Vues</p>
                     <div class="cardfooter">
                         <p>XAF 200,000</p>
@@ -128,8 +87,9 @@
             <div class="card">
                 <img src="{{ asset('img/UserImages/hotel1.png')}}" class="card-img-top" alt="...">
                 <div class="card-body">
-                    <h3>Hotel Bengo</h3>
-                    <p>RUE AMBASSADE DE RUSSIE, Nkol Eton</p>
+                    <h3>Hotel Bengo <button class="btn btn-icon" style="outline:none; border:none;">
+                        <i class="fas fa-map-marker-alt"style="color: red;font-size:40px; margin-left:120px;"></i></button>
+                    </h3>
                     <p class="btn btn-warning"><i class="fa fa-star"></i> 4.9k Vues</p>
                     <div class="cardfooter">
                         <p>XAF 200,000</p>
@@ -142,8 +102,9 @@
             <div class="card">
                 <img src="{{ asset('img/UserImages/hotel1.png')}}" class="card-img-top" alt="...">
                 <div class="card-body">
-                    <h3>Hotel Bengo</h3>
-                    <p>RUE AMBASSADE DE RUSSIE, Nkol Eton</p>
+                    <h3>Hotel Bengo <button class="btn btn-icon" style="outline:none; border:none;">
+                        <i class="fas fa-map-marker-alt"style="color: red;font-size:40px; margin-left:120px;"></i></button>
+                    </h3>
                     <p class="btn btn-warning"><i class="fa fa-star"></i> 4.9k Vues</p>
                     <div class="cardfooter">
                         <p>XAF 200,000</p>
@@ -156,8 +117,57 @@
             <div class="card">
                 <img src="{{ asset('img/UserImages/hotel1.png')}}" class="card-img-top" alt="...">
                 <div class="card-body">
-                    <h3>Hotel Bengo</h3>
-                    <p>RUE AMBASSADE DE RUSSIE, Nkol Eton</p>
+                    <h3>Hotel Bengo <button class="btn btn-icon" style="outline:none; border:none;">
+                        <i class="fas fa-map-marker-alt"style="color: red;font-size:40px; margin-left:120px;"></i></button>
+                    </h3>
+                    <p class="btn btn-warning"><i class="fa fa-star"></i> 4.9k Vues</p>
+                    <div class="cardfooter">
+                        <p>XAF 200,000</p>
+                        <span>par Adulte</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="col-sm-6 col-lg-4 mb-4">
+            <div class="card">
+                <img src="{{ asset('img/UserImages/hotel1.png')}}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h3>Hotel Bengo <button class="btn btn-icon" style="outline:none; border:none;">
+                        <i class="fas fa-map-marker-alt"style="color: red;font-size:40px; margin-left:120px;"></i></button>
+                    </h3>
+                    <p class="btn btn-warning"><i class="fa fa-star"></i> 4.9k Vues</p>
+                    <div class="cardfooter">
+                        <p>XAF 200,000</p>
+                        <span>par Adulte</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-lg-4 mb-4">
+            <div class="card">
+                <img src="{{ asset('img/UserImages/hotel1.png')}}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h3>Hotel Bengo <button class="btn btn-icon" style="outline:none; border:none;">
+                        <i class="fas fa-map-marker-alt"style="color: red;font-size:40px; margin-left:120px;"></i></button>
+                    </h3>
+                    <p class="btn btn-warning"><i class="fa fa-star"></i> 4.9k Vues</p>
+                    <div class="cardfooter">
+                        <p>XAF 200,000</p>
+                        <span>par Adulte</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-lg-4 mb-4">
+            <div class="card">
+                <img src="{{ asset('img/UserImages/hotel1.png')}}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h3>Hotel Bengo <button class="btn btn-icon" style="outline:none; border:none;">
+                        <i class="fas fa-map-marker-alt"style="color: red;font-size:40px; margin-left:120px;"></i></button>
+                    </h3>
                     <p class="btn btn-warning"><i class="fa fa-star"></i> 4.9k Vues</p>
                     <div class="cardfooter">
                         <p>XAF 200,000</p>

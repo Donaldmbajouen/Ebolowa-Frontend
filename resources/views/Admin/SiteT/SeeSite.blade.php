@@ -7,31 +7,29 @@
     <div class="col-md-7 table-responsive p-4 centered shadow-lg " style=" margin-bottom:150px; background-color: white; color:black;">
         <div class="row">
             <div class="col-md-6">
-            <img src="{{asset('img/UserImages/hotel1.png')}}" style=" width:320px; height:300px; border-radius:15px;">
+                <img src="{{$appUrl .$hotel['image']}}" style=" width:330px; height:350px; border-radius:15px;">
             </div>
-            <div  class="col-md-6">
-                <h1 style="text-align: center;" class="my-2">Hotel Zingana</h1>
+            <div  class="col-md-6 fw-bold" style="font-size: 18px">
+                <h1 style="text-align: star;" class="my-2">Site:{{$site['name']}}</h1>
 
                 <h4 style="text-align: center;">Description</h4>
                 <hr class="sidebar-divider my-2" style="background-color: black">
                 <div class="row mt-4">
                     <div class="col-md-6 ">
-                        <p class="">Gerant:  <span>Hotel Zingana</span> </p>
+                        <p class="">Gerant:  <span>Zingana</span> </p>
 
                     </div>
-                    <div class="col-md-6">
-                        <p>type:  <span>Hotel Zingana</span> </p>
-                    </div>
-                    <p style="text-align: center;">description:  <span>Hotel Zingana igvuidv </span> </p>
+
+                    <p style="text-align: star;">description:  <span>{{$site['description']}}</span> </p>
                 </div>
                 <h4 style="text-align: center;">Position</h4>
-                <hr class="sidebar-divider my-2" style="background-color: black">
+                <hr class="sidebar-divider my-3" style="background-color: black">
                 <div class="row">
                     <div class="col-md-6">
-                        <p>Longitude:  <span>129095178</span> </p>
+                        <p>Longitude:  <span>{{$site['longitude']}}</span> </p>
                     </div>
                     <div class="col-md-6">
-                        <p>Latitude:  <span>129095178</span> </p>
+                        <p>Latitude:  <span>{{$site['lattitude']}}</span> </p>
                     </div>
                 </div>
                 <div class="row">

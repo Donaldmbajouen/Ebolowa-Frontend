@@ -32,6 +32,7 @@
                   <tr>
                     <th scope="col">ID</th>
                     <th scope="col">Nom</th>
+                    <th scope="col">Email</th>
                     <th scope="col">Telephone</th>
                     <th scope="col">Role</th>
                     <th scope="col">Statut</th>
@@ -47,6 +48,7 @@
                   <tr>
                       <th scope="row">{{$id++}}</th>
                       <td>{{$user['name']}}</td>
+                      <td>{{$user['email']}}</td>
                       <td>{{$user['phone_number']}}</td>
                       <td>{{$user['role']}}</td>
 

@@ -128,4 +128,8 @@ class UserController extends Controller
        return redirect('/login');
    }
 
+   public function reservation(){
+    return view('Users.reservations');
+   }
+
 }

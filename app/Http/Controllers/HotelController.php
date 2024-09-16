@@ -36,7 +36,7 @@ class HotelController extends Controller
             'Accept' => 'application/json'])->withToken($token)->get("{$appUrl}/api/admin/hotel");
         if($response->successful()){
             $hotels = $response->json();
-            // dd($hotels);
+            // dd($response->body());
             return view ('Admin/Hotels/hotels', compact('hotels'));
         }
     }
@@ -47,32 +47,30 @@ class HotelController extends Controller
         $token = session('access_token');
 
         $validateData = $request->validate([
-        'name'=> 'required|string',
-        'image' =>'required|image|mimes:jpeg,png,jpg,gif|max:2048',
-        'type' =>'integer|max:6',
-        'description'=> 'required|string',
-        'longitude'=> 'required|string',
-        'lattitude' => 'required|string',
-        'gerant_id' => 'required',//|exists:users,id'
+            'name'=> 'required|string',
+            'image' =>'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'type' =>'integer|max:6',
+            'description'=> 'required|string',
+            'longitude'=> 'required|string',
+            'lattitude' => 'required|string',
+            'gerant_id' => 'required',//|exists:users,id'
             'statut' => 'boolean'
         ]);
-
+        $photo =$request->file('image');
         $response = Http::withHeaders([
-            'Content-Type' => 'application/json',
-            'Accept' => 'application/json'])->withToken($token)->post("{$appUrl}/api/admin/hotel/create", [
-        'name' => $validateData['name'],
-        'description' => $validateData['description'],
-        'type' => $validateData['type'],
-        'longitude' => $validateData['longitude'],
-        'lattitude' => $validateData['lattitude'],
-        'image' => $validateData['image'],
-        'gerant_id' => $validateData['gerant_id'],
-        'statut' => $validateData['statut'],
+            'Authorization' => "Bearer $token",
+            'Accept' => 'application/json'])
+            ->attach('image', file_get_contents($photo->getRealPath()), $photo->getClientOriginalName())
+            ->post("{$appUrl}/api/admin/hotel/create", [
+            'name' => $validateData['name'],
+            'description' => $validateData['description'],
+            'type' => $validateData['type'],
+            'longitude' => $validateData['longitude'],
+            'lattitude' => $validateData['lattitude'],
+            'gerant_id' => $validateData['gerant_id'],
+            'statut' => $validateData['statut'],
         ]);
-        dd( $response->body());
-
-
-        if ($response->successful()) {  $response->json()['image_url'];
+        if ($response->successful()) {
             return redirect('admin/AjouterHotels')->with('success' , 'Hotel Enreistre avec succes');
         }
         else{
@@ -81,11 +79,21 @@ class HotelController extends Controller
 
     }
 
-    public function show($id){
-        $response = Http::withToken($token)->get("{$appUrl}/api/admin/hotel/{id}");
-        dd($response);
-        $hotels= new Hotel();
-        return view('Admin.Hotels.hotels', compact('hotels'));
+
+    public function Show($id){
+        $appUrl= env('APP_URL');
+        $token = session('access_token');
+        $response = Http::withHeaders([
+            'Authorization' => "Bearer $token",
+            'Accept' => 'application/json'])
+        ->get("{$appUrl}/api/admin/hotel/{$id}");
+        if ($response->successful()) {
+            $hotel = $response->json();
+            // dd($hotel['image']);
+            return view('Admin.Hotels.SeeHotel', compact('hotel', 'appUrl'));
+        }
+
+
     }
 
 
@@ -102,8 +110,9 @@ class HotelController extends Controller
                 'Content-Type' => 'application/json',
                 'Accept' => 'application/json'])->withToken($token)->get("{$appUrl}/api/admin/hotel/{$id}");
             if ($response->successful()) {
+                // dd($response->body());
                  $hotel = $response->json();
-                return view('Admin.Hotels.updatehotel', compact('hotel', 'adminNames'));
+                return view('Admin.Hotels.updatehotel', compact('hotel', 'adminNames', 'appUrl'));
             }
             else {
             $adminNames = []; // Aucun admin
@@ -122,7 +131,7 @@ class HotelController extends Controller
             'description'=> 'required|string',
             'longitude'=> 'required|string',
             'lattitude' => 'required|string',
-            'gerant_id' => 'required|exists:users,id'
+            'gerant_id' => 'required'
         ]);
         $response =Http::withHeaders([
             'Content-Type' => 'application/json',
@@ -139,14 +148,20 @@ class HotelController extends Controller
     }
 
     public function destroy($id){
+        dd("ovuidv");
         $appUrl= env('APP_URL');
         $token = session('access_token');
-        //
-        $response=Http::withToken($token)->delete("{$appUrl}/api/admin/hotel/$id");
+        dd("ovuidv");
+        $response=Http::withHeaders([
+            'Content-Type' => 'application/json',
+            'Accept' => 'application/json'])->withToken($token)->delete("{$appUrl}/api/admin/hotel/$id");
         if ($response->successful()) {
             $hotel = $response->json();
-
+            dd($response->body());
             redirect('Adminhotels')->compact('hotel')-> with('delete', "Hotel desactive avec succes");
+        }
+        else{
+            dd('Hotel non suprimer');
         }
     }
 

@@ -33,15 +33,13 @@
                     <th scope="col">Longitude</th>
                     <th scope="col">Lattitude</th>
                     <th scope="col">Statut</th>
-                    <th scope="col">Actions</th>
+                    <th scope="col"class="text-center">Actions</th>
                   </tr>
                 </thead>
                 @php
                     $ide = 1
                 @endphp
                 @foreach ($hotels as $hotel )
-
-
                     <tbody>
                     <tr>
                         <th scope="row">{{$ide++}}</th>
@@ -55,15 +53,22 @@
                                 Inactif
                              @endif
                         </td>
-                        <td class="d-flex" >
-                            {{-- <a href="/admin//Voirhotels/{{$hotel['id']}}" class="nav-link p-0 px-2"><i class="fa fa-eye" ></i></a> --}}
+                        <td class="d-flex justify-content-end" >
+
+                            <a class="btn me-2" href="{{route('GUpdateHotel', ['id'=>$hotel['id']])}}" style="background-color: #291157; color:white;" >
+                                <i class="fas fa-pen"></i> Editer
+                            </a>
+
+                            <a class="btn me-2 btn-success" href="{{route('HotelShow', ['id'=>$hotel['id']])}}" style="color:white;" >
+                                <i class="fas fa-eye"></i> Voir
+                            </a>
+
                             <form action="{{route('DeltHotel', ['id' => $hotel['id']])}}" method="POST">
                                 @csrf
-                                    <button class="btn btn-danger " onclick="return confirm('Etes-vous sur de vouloir supprimer cet Hotel?')" type="submit"><i class="fa fa-trash-alt"></i> Supprimer</button>
+                                    <button class="btn btn-danger " onclick="return confirm('Etes-vous sur de vouloir supprimer cet Hotel?')"
+                                        type="submit"><i class="fa fa-trash-alt"></i> Supprimer
+                                    </button>
                                 </form>
-
-                                <a class="btn ms-2" href="{{route('GUpdateHotel', ['id'=>$hotel['id']])}}" style="background-color: #291157; color:white;" >
-                                    <i class="fas fa-pen"></i> Editer</a>
                         </td>
                     </tr>
                 @endforeach

@@ -3,74 +3,20 @@
 <div class="bg-light">
 
 <div class="container">
-    <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img src="{{ asset('img/UserImages/nav-ebolowa.png') }}" class="d-block w-100" style="height:600px; background-size:cover;">
-                <div class="carousel-caption d-none d-md-block" style="margin-bottom:400px; margin-right:600px;">
-                    <h5>First slide label</h5>
-                    <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <img src="{{ asset('img/UserImages/site2.png') }}" class="d-block w-150" alt="...">
-                <div class="carousel-caption d-none d-md-block">
-                    <h5>First slide label</h5>
-                    <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <img src="{{ asset('img/UserImages/img-tourisme.png') }}" class="d-block w-150" alt="...">
-                <div class="carousel-caption d-none d-md-block">
-                    <h5>First slide label</h5>
-                    <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-                </div>
-            </div>
-        </div>
-        <a class="carousel-control-prev" data-bs-target="#carouselExampleFade" role="button" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-        </a>
-        <a class="carousel-control-next" data-bs-target="#carouselExampleFade" role="button" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-        </a>
-        <div class="d-flex  form-content justify-content-center p-2 mt-0">
-            <form action="">
-                <div class="row py-2 bg-dark rounded-3 ">
-                    <div class="col-sm-3  mx-1 form-header">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <input type="text" class="form-control" id="firstName" placeholder="Ebolowa" value="" required>
-                    </div>
-                    <div class="col-sm-2 mx-1 form-header">
-                        <input type="date" class="form-control bg-light" id="firstName" placeholder="" value="" required>
-                    </div>
-                    <div class="col-sm-2 mx-1 form-header">
-                        <input type="date" class="form-control" id="firstName" placeholder="" value="" required>
-                    </div>
-                    <div class="col-sm-2 mx-1 form-header">
-                        <i class="fa fa-users"></i>
-                        <input type="number" class="form-control" id="firstName" placeholder="2 adultes, 1 room" value="" required>
-                    </div>
-                    <div class="col-sm-2 py-1">
-                        <input type="submit" class="form-control btn btn-primary px-1 py-2 " id="firstName" value="Search" required>
-                    </div>
-                </div>
-            </form>
-
-        </div>
-    </div><br>
+    <div class="col mb-2">
+        <img src="{{asset('img/UserImages/musee1.png')}}" class="d-flex w-100" style="height:600px;">
+    </div>
 </div>
 
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-sm-4">
             <img src="{{ asset('img/UserImages/nav-ebolowa.png') }}"
-            style="height: 700px; width:850px; border-top-left-radius:20px;border-bottom-left-radius:20px;"  >
+            style="height: 700px; width:850px; border-top-left-radius:20px;border-bottom-left-radius:10px;"  >
         </div>
         <div class="col-md-4">
             <img src="{{ asset('img/UserImages/nav-ebolowa.png') }}"
-            style="height: 345px;width:400px; margin-bottom:10px; border-top-right-radius:20px;">
+            style="height: 345px;width:400px; margin-bottom:10px; border-top-right-radius:10px;">
             <img src="{{ asset('img/UserImages/nav-ebolowa.png') }}"
             style="height: 345px;width:400px; border-bottom-right-radius:20px;" >
         </div>
@@ -123,7 +69,7 @@
                     </div>
                 </div>
                 <div class="col-md-5 p-5">
-                    <div class="p-5 bg-light" style="font-family: 'Times New Roman; ">
+                    <div class="p-5 bg-secondary" style="font-family: 'Times New Roman; ">
                         <h1 >Book This Tour</h1>
                         <p>Ex optio sequi et quos praesentium in nostrum
                             labore nam rerum iusto .
@@ -132,19 +78,19 @@
                             <div class="row mb-3">
                                 <div class="col-sm-10 mb-2 book_div mx-3">
                                     <i class="fas fa-user"></i>
-                                  <input type="text" class="fw-bold py-4 px-2" id="inputPassword3" placeholder="Name">
+                                  <input type="text" class="fw-bold py-4 px-2"  placeholder="Name">
                                 </div>
                                 <div class="col-sm-10 mb-2 book_div mx-3">
-                                    <i class="fas fa-user"></i>
-                                  <input type="text" class="fw-bold py-4 px-2" id="inputPassword3" placeholder="Email">
+                                    <i class="fas fa-sms"></i>
+                                  <input type="text" class="fw-bold py-4 px-2"  placeholder="Email">
                                 </div>
                                 <div class="col-sm-10 mb-2 book_div mx-3">
-                                    <i class="fas fa-user"></i>
-                                  <input type="text" class="fw-bold py-4 px-2" id="inputPassword3" placeholder="Phone Number">
+                                    <i class="fas fa-phone"></i>
+                                  <input type="text" class="fw-bold py-4 px-2"  placeholder="Phone Number">
                                 </div>
                                 <div class="col-sm-10 mb-2 book_div mx-3">
-                                    <i class="fas fa-user"></i>
-                                  <input type="text" class="fw-bold py-4 px-2" id="inputPassword3" placeholder="Number of Ticket">
+                                    <i class="fas fa-calendar"></i>
+                                  <input type="text" class="fw-bold py-4 px-2"  placeholder="Number of Ticket">
                                 </div>
                             </div>
                             <div class="">
@@ -205,7 +151,7 @@
                 </div>
             </div>
             <div class="col-md-5 p-5">
-                <div class="p-5 bg-light" style="font-family: 'Times New Roman; ">
+                <div class="p-5 bg-secondary" style="font-family: 'Times New Roman; ">
                     <h1 >Book This Tour</h1>
                     <p>Ex optio sequi et quos praesentium in nostrum
                         labore nam rerum iusto .
@@ -214,19 +160,19 @@
                         <div class="row mb-3">
                             <div class="col-sm-10 mb-2 book_div mx-3">
                                 <i class="fas fa-user"></i>
-                              <input type="text" class="fw-bold py-4 px-2" id="inputPassword3" placeholder="Name">
+                              <input type="text" class="fw-bold py-4 px-2" placeholder="Name">
                             </div>
                             <div class="col-sm-10 mb-2 book_div mx-3">
-                                <i class="fas fa-user"></i>
-                              <input type="text" class="fw-bold py-4 px-2" id="inputPassword3" placeholder="Email">
+                                <i class="fas fa-sms"></i>
+                              <input type="text" class="fw-bold py-4 px-2" placeholder="Email">
                             </div>
                             <div class="col-sm-10 mb-2 book_div mx-3">
-                                <i class="fas fa-user"></i>
-                              <input type="text" class="fw-bold py-4 px-2" id="inputPassword3" placeholder="Phone Number">
+                                <i class="fas fa-phone"></i>
+                              <input type="text" class="fw-bold py-4 px-2" placeholder="Phone Number">
                             </div>
                             <div class="col-sm-10 mb-2 book_div mx-3">
-                                <i class="fas fa-user"></i>
-                              <input type="text" class="fw-bold py-4 px-2" id="inputPassword3" placeholder="Number of Ticket">
+                                <i class="fas fa-calendar"></i>
+                              <input type="text" class="fw-bold py-4 px-2" placeholder="Number of Ticket">
                             </div>
                         </div>
                         <div class="">
@@ -251,7 +197,7 @@
                     Lorem ipsum, dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor sit amet consectetur adipisicing elit. <br>Consequatur, dignissimos. Laboriosam maxime dolorem nulla laborum similique tenetur magnam aut quos ipsa autem, nam labore at ipsum ipsam mollitia <br>Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat, repellendus. Vero est, quis qui illo ratione officia vel ullam sunt?sunt doloribus modi doloremque. Sit quasi veniam quaerat vitae doloribus obcaecati itaque quas saepe perferendis facere ut molestias, incidunt sequi animi similique. Praesentium optio laborum deleniti quisquam officiis deserunt dolor aliquam aperiam amet sed!
                 </div>
                 <div class="col-md-5 p-5">
-                    <div class="p-5 bg-light" style="font-family: 'Times New Roman; ">
+                    <div class="p-5 bg-secondary" style="font-family: 'Times New Roman; ">
                         <h1 >Book This Tour</h1>
                         <p>Ex optio sequi et quos praesentium in nostrum
                             labore nam rerum iusto .
@@ -260,19 +206,19 @@
                             <div class="row mb-3">
                                 <div class="col-sm-10 mb-2 book_div mx-3">
                                     <i class="fas fa-user"></i>
-                                  <input type="text" class="fw-bold py-4 px-2" id="inputPassword3" placeholder="Name">
+                                  <input type="text" class="fw-bold py-4 px-2" placeholder="Name">
                                 </div>
                                 <div class="col-sm-10 mb-2 book_div mx-3">
-                                    <i class="fas fa-user"></i>
-                                  <input type="text" class="fw-bold py-4 px-2" id="inputPassword3" placeholder="Email">
+                                    <i class="fas fa-sms"></i>
+                                  <input type="text" class="fw-bold py-4 px-2" placeholder="Email">
                                 </div>
                                 <div class="col-sm-10 mb-2 book_div mx-3">
-                                    <i class="fas fa-user"></i>
-                                  <input type="text" class="fw-bold py-4 px-2" id="inputPassword3" placeholder="Phone Number">
+                                    <i class="fas fa-phone"></i>
+                                  <input type="text" class="fw-bold py-4 px-2" placeholder="Phone Number">
                                 </div>
                                 <div class="col-sm-10 mb-2 book_div mx-3">
-                                    <i class="fas fa-user"></i>
-                                  <input type="text" class="fw-bold py-4 px-2" id="inputPassword3" placeholder="Number of Ticket">
+                                    <i class="fas fa-calendar"></i>
+                                  <input type="text" class="fw-bold py-4 px-2" placeholder="Number of Ticket">
                                 </div>
                             </div>
                             <div class="">

@@ -17,6 +17,7 @@
                 </div>
             @endif
             <div class="col mt-2">
+
                 <div class="col">
                     <form action="{{route('PostUpdateHotel', ['id' => $hotel['id']])}}" method="POST" class="p-4"  enctype="multipart/form-data">
                         @csrf
@@ -44,7 +45,7 @@
                         <div class="row mt-3">
                             <div class="col-md-6">
                                 <label for="name">Entrer une Image de L'Hotel</label>
-                                <input type="file" name="image" value="{{$hotel['image'] }}"  class="form-control @error('image') is-invalid @enderror">
+                                <input type="file" name="image" value="{{$hotel['image'] }}"  class="form-control @error('image') is-invalid @enderror" value="{{$hotel['image']}}">
                                 <span style="color: red; margin-left: 10px">
                                     @error('image')
                                     {{$message}}
@@ -93,7 +94,8 @@
                         </div>
                         <div class="row mt-3">
                             <select class="form-control @error('gerant_id') is-invalid @enderror" id="adminSelect" name="gerant_id" required>
-                                <option value="">Sélectionner le Gerand de l'hotel</option>
+                                <option value="">Sélectionner le Gerant de l'hotel</option>
+
                                 @foreach ($adminNames as $id => $name)
                                     <option value="{{$id}}">{{ $name }}</option>
                                 @endforeach

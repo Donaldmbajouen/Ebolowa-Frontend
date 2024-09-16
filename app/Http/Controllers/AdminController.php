@@ -43,39 +43,36 @@ class AdminController extends Controller
     }
 
     public function create(Request $request){
-
         $appUrl= env('APP_URL');
         $token = session('access_token');
-
-
         $validateData = $request->validate([
-        'name'=> 'required|string',
-        'image' =>'required|image|mimes:jpeg,png,jpg,gif|max:2048',
-        'type' =>'integer|max:6',
-        'description'=> 'required|string',
-        'longitude'=> 'required|string',
-        'lattitude' => 'required|string',
-        'gerant_id' => 'required|exists:users,id',
+            'name'=> 'required|string',
+            'image' =>'required|mimes:jpeg,png,jpg,gif|max:2048',
+            'description'=> 'required|string',
+            'longitude'=> 'required|string',
+            'lattitude' => 'required|string',
+            'gerant_id' => 'required',
             'statut' => 'boolean'
         ]);
+
+
+        $photo =$request->file('image');
         $response = Http::withHeaders([
-            'Content-Type' => 'application/json',
-            'Accept' => 'application/json'])->withToken($token)->post("{$appUrl}/api/admin/SiteTouristique/create", [
+            'Authorization' => "Bearer $token",
+            'Accept' => 'application/json'])
+        ->attach('image', file_get_contents($photo->getRealPath()), $photo->getClientOriginalName())
+        ->post("{$appUrl}/api/admin/SiteTouristique/create", [
         'name' => $validateData['name'],
         'description' => $validateData['description'],
-        'type' => $validateData['type'],
         'longitude' => $validateData['longitude'],
         'lattitude' => $validateData['lattitude'],
-        'image' => $imagePath,
         'gerant_id' => $validateData['gerant_id'],
         'statut' => $validateData['statut'],
 
         ]);
-
         if ($response->successful()) {
-            return redirect('admin/AjouterSiteTouristiques')->with('statut' , 'SiteTouristique Enreistre avec succes');
+            return redirect('admin/Site-touristiques')->with('site' , 'SiteTouristique Enregistre avec succes');
         }
-        return("rien ne marche mon chaud");
 
     }
 
@@ -94,6 +91,20 @@ class AdminController extends Controller
             // return redirect('Admin.SiteT.updatesite')->route("admin/site/{$site['id']}/update", compact('site'));
 
            return view('Admin.SiteT.updatesite', compact('site'));
+        }
+    }
+
+    public function show($id){
+        $appUrl= env('APP_URL');
+        $token = session('access_token');
+        $response = Http::withHeaders([
+            'Authorization' => "Bearer $token",
+            'Accept' => 'application/json'])
+        ->get("{$appUrl}/api/admin/SiteTouristique/{$id}");
+        if ($response->successful()) {
+            $site = $response->json();
+            // dd($hotel['image']);
+            return view('Admin.SiteT.SeeSite', compact('site', 'appUrl'));
         }
     }
 
