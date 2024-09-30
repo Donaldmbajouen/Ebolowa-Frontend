@@ -24,6 +24,11 @@ use App\Http\Controllers\AdminHotelController;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('/localisation/{id}', [UserController::class,'map'])->name('map');
+
+
+
 //route de l'authentification
 
 Route::post('register',[UserController::class,'register'])->name('register');
@@ -42,6 +47,9 @@ Route::post('logout',[UserController::class,'logout'])->name('logout')
     Route::get('/Historique', [UserController::class, 'historique'])->name('historique');
     Route::get('/Hotels', [UserController::class, 'Hotels'])->name('hotels');
     Route::get('/reservation', [UserController::class, 'reservation'])->name('reservation');
+    Route::get('Hotels/{hotel_id}/pieces', [UserController::class, 'pieces'])->name('pieces');
+    Route::get('/dashboard-user', [UserController::class, 'dashboard'])->name('dashboardUser');
+
 
 
 
@@ -60,12 +68,13 @@ Route::post('logout',[UserController::class,'logout'])->name('logout')
         Route::get('/Hotels/{id}/show', [HotelController::class, 'show'])->name('HotelShow');
         Route::get('/Hotels/{id}', [HotelController::class, 'showupdate'])->name('GUpdateHotel');
         Route::post('/Hotels/{id}', [HotelController::class, 'Postupdate'])->name('PostUpdateHotel');
-        Route::delete('/Hotels/{id}', [HotelController::class, 'destroy'])->name('DeltHotel');
+        Route::delete('/Hotels/{id}', [HotelController::class, 'delete'])->name('DeltHotel');
 
 
     //routes Admin du Site
         // Route::get('/Voirhotels', [AdminController::class, 'Voirhotels'])-> name('Voirhotels');
         Route::get('site/{id}/update', [AdminController::class, 'ShowUpdate'])->name('SiteUpdate');
+        Route::post('site/{id}', [AdminController::class, 'update'])->name('PostSiteUpdate');
         Route::get('/Site-touristiques', [AdminController::class, 'index'])->name('AdminSiteT');
         Route::get('/AjouterSiteT', [AdminController::class, 'AjouterSiteT'])->name('AjouterSiteT');
         Route::post('/AjouterSiteT/create', [AdminController::class, 'create'])->name('PostAddSiteT');
@@ -85,9 +94,15 @@ Route::post('logout',[UserController::class,'logout'])->name('logout')
         // Route::post('users/{id}', [AdminUserController::class, 'destroy'])->name('UserDelt');
     });
 
+    // route nongees
+
+
 //Routes de l'Admin hotels
-Route::group(['prefix'=>'admin-secondaire', 'middleware' => 'admin_principal'], function(){
-    Route::get('hotels', [AdminHotelController::class, 'index'])->name('AdminHotel');
+Route::group(['prefix'=>'admin-hotel/{hotel_id}', 'middleware' => 'admin_secondaire'], function(){ ///{hotel_id}
+    Route::get('/', [AdminHotelController::class, 'home'])->name('admin_hotel');
+    Route::get('piece', [AdminHotelController::class, 'homepiece'])->name('admin_piece');
+    Route::get('ajouter-piece', [AdminHotelController::class, 'AddForm'])->name('AddFormPiece');
+    Route::post('ajouter-piece', [AdminHotelController::class, 'store'])->name('AddPiece');
 
 
 });

@@ -29,17 +29,21 @@
     <div id="wrapper">
 
 
+        @php
+            $hotel_id = session('user')['hotel']['id'];
+        @endphp
 
         <!-- Sidebar -->
-        <ul class="navbar-nav bg-gradient  sidebar sidebar-dark accordion" id="accordionSidebar" style="background-color: rgb(0, 74, 106)">
+        <ul class="navbar-nav bg-gradient fw-bold fs-2  sidebar sidebar-dark accordion" id="accordionSidebar" style="background-color: rgb(0, 74, 106)">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ route('Admin')}}">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ route('admin_hotel', ['hotel_id' =>$hotel_id])}}">
                 <div class="sidebar-brand-icon ">
                     <i class="fas fa-city"></i>
                 </div>
-                <div class="sidebar-brand-text mx-2">
 
+                <div class="sidebar-brand-text mx-2">
+                    Hotel Admin
                 </div>
             </a>
 
@@ -48,24 +52,24 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="nav-link" href="{{ route('Admin')}}">
+                <a class="nav-link" href="{{ route('admin_hotel', ['hotel_id' =>$hotel_id])}}">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Tableau de Bord Hotel</span></a>
+                    <span>Tableau de Bord </span></a>
             </li>
             <!-- Divider -->
             <hr class="sidebar-divider">
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
+                <a class="nav-link collapsed" href="{{ route('admin_piece', ['hotel_id' =>$hotel_id])}}" data-toggle="collapse" data-target="#collapseTwo"
                     aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-fw fa-university"></i>
                     <span>PIECES</span>
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="{{ route('Adminhotels')}}">PIECES</a>
-                        <a class="collapse-item" href="{{ route('Adminhotels')}}">Statistiques</a>
+                        <a class="collapse-item" href="{{ route('admin_piece', ['hotel_id' =>$hotel_id])}}">PIECES</a>
+                        <a class="collapse-item" href="{{ route('admin_piece', ['hotel_id' =>$hotel_id])}}">Statistiques</a>
                     </div>
                 </div>
             </li>
@@ -79,33 +83,21 @@
                 </a>
                 <div id="collapseT" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="{{ route('AdminSiteT')}}">Reservations</a>
-                        <a class="collapse-item" href="{{ route('AdminSiteT')}}">Statistiques</a>
+                        <a class="collapse-item" href="{{ route('admin_hotel', ['hotel_id' =>$hotel_id])}}">Reservations</a>
+                        <a class="collapse-item" href="{{ route('admin_hotel', ['hotel_id' =>$hotel_id])}}">Statistiques</a>
                     </div>
                 </div>
             </li>
+            <hr class="sidebar-divider">
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapT"
-                    aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="fas fa-fw fa-university"></i>
-                    <span>Services</span>
-                </a>
-                <div id="collapT" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="{{ route('AdminSiteT')}}">Services</a>
-                        <a class="collapse-item" href="{{ route('AdminSiteT')}}">Statistiques</a>
-                    </div>
-                </div>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapT"
+                <a class="nav-link collapsed" href="{{ route('admin_hotel', ['hotel_id' =>$hotel_id])}}" data-toggle="collapse" data-target="#collapT"
                     aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-fw fa-university"></i>
                     <span>Gallerie</span>
                 </a>
                 <div id="collapT" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="{{ route('AdminSiteT')}}">Gallerie</a>
+                        <a class="collapse-item" href="{{ route('admin_hotel', ['hotel_id' =>$hotel_id])}}">Photos</a>
                     </div>
                 </div>
             </li>
@@ -113,7 +105,7 @@
             <!-- Divider -->
             <hr class="sidebar-divider">
             <li class="nav-item" style="margin-top:180%;">
-                <a class="nav-link collapsed" href="{{ route('Admin')}}">
+                <a class="nav-link collapsed" href="{{ route('admin_hotel', ['hotel_id' =>$hotel_id])}}">
                     <i class="fas fa-fw fa-cog"></i>
                     <span>Reglages</span>
                 </a>

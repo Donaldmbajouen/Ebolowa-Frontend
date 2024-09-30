@@ -2,7 +2,6 @@ body{
     padding: 0;
     margin: 0;
     font-family: 'Roboto';
-
 }
 
 .Title{
@@ -24,13 +23,13 @@ body{
     font-size: 20px;
 }
 .nav-item a:hover{
+    border-bottom: 5px solid rgb(4, 0, 52);
+}
+/* .nav-item a:active{
     font-size: 22px;
+    border-bottom: 2px solid black;
     text-decoration:underline;
-}
-.nav-item a:active{
-    font-size: 20px;
-    text-decoration:underline;
-}
+} */
 .langue{
     display: flex;
     justify-content: flex-end;
@@ -559,5 +558,12 @@ body{
 .btn-icon i{
     outline: none;
     border: none;
+}
+.activeM{
+    border-bottom: 5px solid rgb(4, 0, 52);
+}
+#map {
+    height: 500px; /* ou la taille souhaitée */
+    width: 50%;   /* s'assurer que la largeur est aussi définie */
 }
 

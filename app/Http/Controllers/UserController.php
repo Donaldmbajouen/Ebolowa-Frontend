@@ -12,12 +12,24 @@ class UserController extends Controller
 {
 
     public function main_user(){
-        session(['tata' => 'toto']);
         return view ('Users/Home');
     }
 
     public function site_touristique(){
-        return view ('Users/SiteTouristique');
+        $appUrl= env('APP_URL');
+        //
+        $response=Http::withHeaders([
+            'Content-Type' => 'application/json',
+            'Accept' => 'application/json'])->get("{$appUrl}/api/admin/SiteTouristique");
+        if($response->successful()){
+            $Sites = $response->json();
+            foreach ($Sites as $site) {
+                if ($site['statut'] === 1) {
+                    $SitesActifs[] = $site; // Ajoutez l'hotle actif au tableau
+                }
+            }
+            return view ('Users/SiteTouristique', compact('SitesActifs', 'appUrl'));
+        }
     }
     public function reserver_site_touristique(){
         return view ('Users/ReservesiteTouristique');
@@ -29,9 +41,21 @@ class UserController extends Controller
         return view ('Users/TimelinePage');
     }
     public function Hotels(){
+        $appUrl= env('APP_URL');
 
-        // dd(Session::get('access_token'), session('access_token'));
-        return view('Users/Hotels');
+        $response = Http::withHeaders([
+            'Content-Type' => 'application/json',
+            'Accept' => 'application/json'])->get("{$appUrl}/api/admin/hotel");
+        if($response->successful()){
+            $hotels = $response->json();
+            foreach ($hotels as $hotel) {
+                if ($hotel['statut'] == 1) {
+                    $hotelsActifs[] = $hotel; // Ajoutez l'hotle actif au tableau
+                }
+            }
+            return view('Users/Hotels', compact('hotelsActifs', 'appUrl'));
+        }
+
     }
 
     public  function showLoginForm()
@@ -60,15 +84,13 @@ class UserController extends Controller
 
        if ($response->successful()) {
            $token = $response->json('access_token');
-
            // Stocker le token dans la session ou le stockage local
            Session::put('access_token', $token);
-        //    $request->session()->put('access_token', $token);
-        //    session(['access_token' => $token]);
            $user = $response->json('user');
            Session::put('user', $user);
-        //    session(['user' => $user]);
-            // dd($user['role']);
+            if($user['role'] === "admin_principal"){
+                return redirect('/admin');
+            }
             if($user['role'] === "admin_principal"){
                 return redirect('/admin');
             }
@@ -102,34 +124,73 @@ class UserController extends Controller
        return redirect('register')->with(['error', "email or password invalide"]);
    }
 
+   public function pieces($hotel_id){
+        $token = session('access_token');
+        $appUrl= env('APP_URL');
+        $response1=Http::withHeaders([
+            'Content-Type' => 'application/json',
+            'Accept' => 'application/json'])->withToken($token)->get("{$appUrl}/api/admin/hotel/$hotel_id");
+
+        if ($response1->successful()) {
+            $hotel = $response1->json();
+            $response2=Http::withHeaders([
+                'Content-Type' => 'application/json',
+                'Accept' => 'application/json'])->withToken($token)->get("{$appUrl}/api/hotel/$hotel_id/pieces");
+            if ($response2->successful()) {
+                $pieces = $response2->json();
+                // dd($pieces);
+                if($pieces == null){
+                    return("pas de chambres disponibles pour le moment");
+                } else{
+                    return view('Users.Pieces', compact('pieces', 'hotel', 'appUrl'));
+                }
+            }
+        }
+   }
+
 
 
    public function logout(Request $request)
    {
         $appUrl = env('APP_URL');
-       $token = $request->session()->get('api_token');
+        $token = $request->session()->get('api_token');
+        dd($token);
+        $response=Http::withHeaders([
+            'Content-Type' => 'application/json',
+            'Accept' => 'application/json'])->withToken($token)->post("{$appUrl}/api/logout");
+            dd($response->body());
+            if ($response->successful()) {
+                // Vider la session après une déconnexion réussie
+                // $request->session()->forget('api_token');
+                session()->flush();
 
-       if ($token) {
-           Http::withToken($token)->post("{$appUrl}/api/logout");
-
-           if ($response->successful()) {
-            // Vider la session après une déconnexion réussie
-            // $request->session()->forget('api_token');
-            session()->flush();
-
-            // Rediriger vers la page de connexion avec un message de succès
-            return redirect()->route('login')->with('success', 'Déconnexion réussie.');
-        } else {
-            // Gérer les erreurs de l'API
-            return redirect()->back()->with('error', 'Erreur lors de la déconnexion.');
-        }
-       }
+                // Rediriger vers la page de connexion avec un message de succès
+                return redirect()->route('login')->with('success', 'Déconnexion réussie.');
+            } else {
+                // Gérer les erreurs de l'API
+                return redirect()->back()->with('error', 'Erreur lors de la déconnexion.');
+            }
     //    Si aucun token, rediriger sans déconnexion
-       return redirect('/login');
+
    }
 
    public function reservation(){
     return view('Users.reservations');
+   }
+   public function dashboard(){
+    return view('Users.UserBoard');
+   }
+   public function map( $hotel_id){
+    $token = session('access_token');
+    $appUrl= env('APP_URL');
+    $response1=Http::withHeaders([
+        'Content-Type' => 'application/json',
+        'Accept' => 'application/json'])->withToken($token)->get("{$appUrl}/api/admin/hotel/$hotel_id");
+    if ($response1->successful()) {
+        $hotel = $response1->json();
+        return view('Users.localisation', compact('hotel'));
+    }
+
    }
 
 }

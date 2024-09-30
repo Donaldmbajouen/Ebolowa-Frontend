@@ -91,7 +91,7 @@
                             </div>
                         </div>
                         <div class="row mt-3">
-                            <select class="form-control @error('gerant_id') is-invalid @enderror" value="{{ old('gerant_id') }}" id="adminSelect" name="gerant_id" required>
+                            <select class="form-control @error('user_id') is-invalid @enderror" value="{{ old('user_id') }}" id="adminSelect" name="user_id" required>
                                 <option value="">Sélectionner le Gerand de l'hotel</option>
                                 @foreach ($adminNames as $id => $name)
                                     <option value="{{ $id }}">{{ $name }}</option>

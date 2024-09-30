@@ -26,6 +26,6 @@ class AdminMiddleware
             }
         }
 
-        return response()->json(['error' => 'Accès refusé.'], 403); //
+        return abort(401); //
     }
 }

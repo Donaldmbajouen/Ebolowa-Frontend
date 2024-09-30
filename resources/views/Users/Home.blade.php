@@ -21,7 +21,7 @@
 <p  style="display:flex;  justify-content:  center; font-size: 25px; color: rgb(100, 100, 100); margin-top: 30px;">Histoire</p>
 <p style="display:flex;  justify-content:  center; color: rgb(14, 10, 74);font-size: 50px;font-family: 'Times New Roman';">Un Riche Heritage Historique</p>
 <div class="row bg-light p-5 rounded">
-    <div class="col-lg-6 mt-3 histoire d-flex align-items-start">
+    <div class="col-lg-6 mt-4 histoire d-flex align-items-start">
         <p>Ebolowa est une ville empreinte d'histoire, où se mêlent les traces des civilisations
             passées et les événements marquants qui ont façonné le Cameroun moderne. Avant
             l'arrivée des colons européens, la région d'Ebolowa était peuplée par les peuples Bulu,
@@ -33,7 +33,7 @@
             du Cameroun moderne. Aujourd'hui, Ebolowa conserve les vestiges de cette histoire
             riche et complexe, invitant les visiteurs à découvrir un patrimoine culturel
             authentique.
-            <button class="btn btn-outline-info d-flex align-items-start mt-5 p-2 btn-lg">En Savoir Plus</button>
+            <a href="{{route('historique')}}" class="btn btn-outline-info  nav-link mt-5 py-3 btn-lg">En Savoir Plus</a>
         </p>
 
     </div>
@@ -170,7 +170,7 @@
 </div>
 </div>
 <div class="d-flex justify-content-center">
-<button class="btn btn-outline-warning btn-lg py-3 px-5"> En Savoir Plus</button>
+<a href="{{route('hotels')}}" class="btn fw-bold btn-outline-warning btn-lg py-3 px-5"> En Savoir Plus</a>
 </div><br><br>
 
 <div class="header-end">

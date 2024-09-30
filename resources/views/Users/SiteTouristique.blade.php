@@ -3,9 +3,9 @@
 @section('content')
 
 
-<div class="hearder_content_touristique mb-1">
+<div class="hearder_content_touristique mb-1 ">
     <img src="{{ asset('img/UserImages/reunification.png') }}" style="" class="card-img" alt="...">
-    <div class="d-flex  form-content justify-content-center bg-light p-2">
+    <div class="d-flex  form-content justify-content-center bg-dark p-2">
         <form action="">
             <div class="row py-2">
                 <div class="col-sm-3  mx-1 form-header">
@@ -34,153 +34,29 @@
 
 <div class="content-touritique">
     <div class="row ">
-        <div class="col-sm-6 col-lg-4 mb-4">
-            <div class="card">
-                <img src="{{ asset('img/UserImages/hotel1.png')}}" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h3>Hotel Bengo <button class="btn btn-icon" style="outline:none; border:none;">
-                        <i class="fas fa-map-marker-alt"style="color: red;font-size:40px; margin-left:120px;"></i></button>
-                    </h3>
-                    <p>RUE AMBASSADE DE RUSSIE, Nkol Eton</p>
-                    <p class="btn btn-warning"><i class="fa fa-star"></i> 4.9k Vues</p>
-                    <div class="cardfooter">
-                        <p>XAF 200,000</p>
-                        <span>par Adulte</span>
+        <h1>Les Sites Touristiques Les Plus Populaire De Ebolowa</h1><hr class="mb-5">
+        @foreach ($SitesActifs as $site)
+            <div class="col-sm-6 col-lg-4 mb-4">
+                <div class="card">
+                    <img src="{{$appUrl .$site['image']}}" class="card-img-top" style="height:350px;width:410px;">
+                    <div class="card-body">
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <a href="#" class="fw-bold fs-2 nav-link">{{$site['name']}}</a>
+                            <button class="btn btn-icon" style="outline: none; border: none;">
+                                <i class="fas fa-map-marker-alt" style="color: rgb(252, 49, 4); font-size: 40px;"></i>
+                            </button>
+                        </div>
+                        <p>{{$site['description']}}</p>
+                        <p class="btn btn-warning"><i class="fa fa-star"></i> 4.9k Vues</p>
+                        <div class="cardfooter">
+                            <a class="btn btn-lg btn-outline nav-link fs-5" href="{{route('reserver_une_visite')}}" style="color:rgb(29, 29, 161)">En savoir plus</a>
+                            <span>Ebolowa cameroun</span>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="col-sm-6 col-lg-4 mb-4">
-            <div class="card">
-                <img src="{{ asset('img/UserImages/hotel1.png')}}" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h3>Hotel Bengo <button class="btn btn-icon" style="outline:none; border:none;">
-                        <i class="fas fa-map-marker-alt"style="color: red;font-size:40px; margin-left:120px;"></i></button>
-                    </h3>
-                    <p class="btn btn-warning"><i class="fa fa-star"></i> 4.9k Vues</p>
-                    <div class="cardfooter">
-                        <p>XAF 200,000</p>
-                        <span>par Adulte</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-6 col-lg-4 mb-4">
-            <div class="card">
-                <img src="{{ asset('img/UserImages/hotel1.png')}}" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h3>Hotel Bengo <button class="btn btn-icon" style="outline:none; border:none;">
-                        <i class="fas fa-map-marker-alt"style="color: red;font-size:40px; margin-left:120px;"></i></button>
-                    </h3>
-                    <p class="btn btn-warning"><i class="fa fa-star"></i> 4.9k Vues</p>
-                    <div class="cardfooter">
-                        <p>XAF 200,000</p>
-                        <span>par Adulte</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-
+        @endforeach
     </div>
-    <div class="row">
-        <div class="col-sm-6 col-lg-4 mb-4">
-            <div class="card">
-                <img src="{{ asset('img/UserImages/hotel1.png')}}" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h3>Hotel Bengo <button class="btn btn-icon" style="outline:none; border:none;">
-                        <i class="fas fa-map-marker-alt"style="color: red;font-size:40px; margin-left:120px;"></i></button>
-                    </h3>
-                    <p class="btn btn-warning"><i class="fa fa-star"></i> 4.9k Vues</p>
-                    <div class="cardfooter">
-                        <p>XAF 200,000</p>
-                        <span>par Adulte</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-6 col-lg-4 mb-4">
-            <div class="card">
-                <img src="{{ asset('img/UserImages/hotel1.png')}}" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h3>Hotel Bengo <button class="btn btn-icon" style="outline:none; border:none;">
-                        <i class="fas fa-map-marker-alt"style="color: red;font-size:40px; margin-left:120px;"></i></button>
-                    </h3>
-                    <p class="btn btn-warning"><i class="fa fa-star"></i> 4.9k Vues</p>
-                    <div class="cardfooter">
-                        <p>XAF 200,000</p>
-                        <span>par Adulte</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-6 col-lg-4 mb-4">
-            <div class="card">
-                <img src="{{ asset('img/UserImages/hotel1.png')}}" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h3>Hotel Bengo <button class="btn btn-icon" style="outline:none; border:none;">
-                        <i class="fas fa-map-marker-alt"style="color: red;font-size:40px; margin-left:120px;"></i></button>
-                    </h3>
-                    <p class="btn btn-warning"><i class="fa fa-star"></i> 4.9k Vues</p>
-                    <div class="cardfooter">
-                        <p>XAF 200,000</p>
-                        <span>par Adulte</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </div>
-    <div class="row">
-        <div class="col-sm-6 col-lg-4 mb-4">
-            <div class="card">
-                <img src="{{ asset('img/UserImages/hotel1.png')}}" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h3>Hotel Bengo <button class="btn btn-icon" style="outline:none; border:none;">
-                        <i class="fas fa-map-marker-alt"style="color: red;font-size:40px; margin-left:120px;"></i></button>
-                    </h3>
-                    <p class="btn btn-warning"><i class="fa fa-star"></i> 4.9k Vues</p>
-                    <div class="cardfooter">
-                        <p>XAF 200,000</p>
-                        <span>par Adulte</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-6 col-lg-4 mb-4">
-            <div class="card">
-                <img src="{{ asset('img/UserImages/hotel1.png')}}" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h3>Hotel Bengo <button class="btn btn-icon" style="outline:none; border:none;">
-                        <i class="fas fa-map-marker-alt"style="color: red;font-size:40px; margin-left:120px;"></i></button>
-                    </h3>
-                    <p class="btn btn-warning"><i class="fa fa-star"></i> 4.9k Vues</p>
-                    <div class="cardfooter">
-                        <p>XAF 200,000</p>
-                        <span>par Adulte</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-6 col-lg-4 mb-4">
-            <div class="card">
-                <img src="{{ asset('img/UserImages/hotel1.png')}}" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h3>Hotel Bengo <button class="btn btn-icon" style="outline:none; border:none;">
-                        <i class="fas fa-map-marker-alt"style="color: red;font-size:40px; margin-left:120px;"></i></button>
-                    </h3>
-                    <p class="btn btn-warning"><i class="fa fa-star"></i> 4.9k Vues</p>
-                    <div class="cardfooter">
-                        <p>XAF 200,000</p>
-                        <span>par Adulte</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </div>
-    <div class="d-flex justify-content-center">
-        <a href="{{route('reserver_une_visite')}}" class="btn btn-outline-warning  btn-lg py-3 px-5"> En Savoir plus</a>
-    </div><br>
 </div>
 
 

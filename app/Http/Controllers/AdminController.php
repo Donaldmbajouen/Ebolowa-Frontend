@@ -15,15 +15,15 @@ class AdminController extends Controller
     }
     //les fonctions du site touristiques ici
     public function index(){ // fonction index
-            $appUrl= env('APP_URL');
-            $token = session('access_token');
-            $response = Http::withHeaders([
-                'Content-Type' => 'application/json',
-                'Accept' => 'application/json'])->withToken($token)->get("{$appUrl}/api/admin/SiteTouristique");
-            if($response->successful()){
-                $sites = $response->json();
-                return view ('Admin/SiteT/SiteT', compact('sites'));
-            }
+         $appUrl= env('APP_URL');
+         $token = session('access_token');
+         $response = Http::withHeaders([
+             'Content-Type' => 'application/json',
+             'Accept' => 'application/json'])->withToken($token)->get("{$appUrl}/api/admin/SiteTouristique");
+        if($response->successful()){
+           $sites = $response->json();
+           return view ('Admin/SiteT/SiteT', compact('sites', 'appUrl'));
+        }
     }
 
     public function AjouterSiteT(){
@@ -76,21 +76,67 @@ class AdminController extends Controller
 
     }
 
-    public function ShowUpdate(string $id)
-    {
+    public function showupdate( string $id){
         $appUrl= env('APP_URL');
         $token = session('access_token');
+        $response1 = Http::withToken($token)->get('http://127.0.0.1:8000/api/admin/user/filtre');
+        $adminNames = [];
 
+        // Vérifiez si la requête a réussi
+        if ($response1->successful()) {
+            $adminNames = $response1->json();
+        } // Récupérer les noms sous forme de tableau associatif
         $response=Http::withHeaders([
             'Content-Type' => 'application/json',
             'Accept' => 'application/json'])->withToken($token)->get("{$appUrl}/api/admin/SiteTouristique/{$id}");
-            dd($response->body());
         if ($response->successful()) {
-            $site = $response->json();
-            // return redirect("admin/users/$id")->with('users', $users);
-            // return redirect('Admin.SiteT.updatesite')->route("admin/site/{$site['id']}/update", compact('site'));
+            $sites = $response->json();
+            return view('Admin.SiteT.updatesite', compact('sites', 'adminNames', 'appUrl'));
+        }
+        else {
+            $adminNames = []; // Aucun admin
+            $sites = $response->json();
+            return view('Admin.SiteT.updatesite', compact('sites', 'adminNames', 'appUrl'));
+        }
 
-           return view('Admin.SiteT.updatesite', compact('site'));
+    }
+
+    public function update( Request $request, $id){
+        $token = session('access_token');
+        $appUrl= env('APP_URL');
+        $validateData=$request->validate([
+            'name'=> 'required|string',
+            'image' =>'nullable|image|mimes:jpeg,png,jpg,gif',
+            'type' =>'integer|max:6',
+            'description'=> 'required|string',
+            'longitude'=> 'required|string',
+            'lattitude' => 'required|string',
+            'user_id' => 'required',
+            'statut' => 'boolean'
+        ]);
+
+        $photo =$request->file('image');
+
+        $response = Http::withHeaders([
+            'Authorization' => "Bearer $token",
+            'Accept' => 'application/json'
+        ]);
+
+        // Vérifiez si la photo n'est pas null avant d'attacher
+        if ($photo) {//&& !$photo->isEmpty()
+            $response = $response->attach('image', file_get_contents($photo->getRealPath()), $photo->getClientOriginalName());
+        }
+
+        // Effectuer la requête PUT
+        $response = $response->withToken($token)
+         ->post("{$appUrl}/api/admin/SiteTouristique/$id/update", $request->all());
+        $site = $response->json();
+        if($response->successful()){
+            return redirect()->route('AdminSiteT')->with('modifier', 'Site Touristique Modifie Avec Succes');
+        }
+        else{
+            $users = $response->json();
+            return redirect()->route('AdminSiteT')->with('!modifier', 'Site Touristique Non Modifier verifier puis recommencer');
         }
     }
 

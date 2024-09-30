@@ -60,12 +60,11 @@ class AdminUserController extends Controller
                 'phone_number'=> $validateData['phone_number'],
                 'statut'=> $validateData['statut'],
                 'password'=> $validateData['password'],
-            ]);
-            if ($response->successful()) {
-                return redirect('admin/users/create')->with('success', 'utilisateur Enreistre avec succes');
-            }
-            else{
-                return redirect('')->with('echec', 'utilisateur Non Enreistre verifier les champs puis recommencer');
+        ]);
+        if ($response->successful()) {
+            return redirect('admin/users/create')->with('success', 'utilisateur Enreistre avec succes');
+        }else{
+            return redirect('')->with('echec', 'utilisateur Non Enreistre verifier les champs puis recommencer');
             }
     }
 
@@ -97,7 +96,7 @@ class AdminUserController extends Controller
             'Accept' => 'application/json'])->withToken($token)->get("{$appUrl}/api/admin/users/{$id}");
             if ($response->successful()) {
                 $users = $response->json();
-                // return redirect("admin/users/$id")->with('users', $users);
+                
                 return view('Admin.users.update', compact('users'));
             }
     }

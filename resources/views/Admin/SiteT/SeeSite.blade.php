@@ -2,12 +2,12 @@
 
 @section('content')
 
-<div class="row mb-5" style="margin-top: 100px;">
-    <div class="col-md-2"></div>
-    <div class="col-md-7 table-responsive p-4 centered shadow-lg " style=" margin-bottom:150px; background-color: white; color:black;">
+<div class="row mb-5" style="margin-top: 100px; width:1400px;">
+    <div class="col-md-1"></div>
+    <div class="col-md-9 table-responsive p-4 centered shadow-lg " style=" margin-bottom:150px; background-color: white; color:black;">
         <div class="row">
             <div class="col-md-6">
-                <img src="{{$appUrl .$hotel['image']}}" style=" width:330px; height:350px; border-radius:15px;">
+                <img src="{{$appUrl .$site['image']}}" style=" width:450px; height:400px; border-radius:15px;">
             </div>
             <div  class="col-md-6 fw-bold" style="font-size: 18px">
                 <h1 style="text-align: star;" class="my-2">Site:{{$site['name']}}</h1>
@@ -34,8 +34,11 @@
                 </div>
                 <div class="row">
                     {{-- <div class="col-md-6"></div> --}}
-                    <div class="mt-4 col-md-12" style="display: flex; justify-content:end;">
-                        <a href="{{route('Adminhotels')}}"  class="btn btn-lg px-3 w-100 rounded btn-danger">Retour</a>
+                    <div class="mt-4 col-md-6" style="display: flex; justify-content:end;">
+                        <a href="{{route('AdminSiteT')}}"  class="btn btn-lg px-3 w-100 rounded btn-danger">Retour</a>
+                    </div>
+                    <div class="mt-4 col-md-6" style="display: flex; justify-content:end;">
+                        <a href="{{route('SiteUpdate', ['id'=>$site['id']])}}"  class="btn btn-lg px-3 w-100 rounded btn-primary">Editer</a>
                     </div>
                 </div>
 

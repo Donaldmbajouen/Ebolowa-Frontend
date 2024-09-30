@@ -12,7 +12,7 @@
     <link href= " {{ asset('vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css">
 
     <link href= " {{ asset('vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
-
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
 
 
 
@@ -21,11 +21,9 @@
 </head>
 <body>
 
-
-     {{-- {{ session('user')['name']}} --}}
-    {{-- @if (session('user'))
-        <h1>Bienvenue, {{ session('user')['name'] }}</h1>
-    @endif --}}
+        @php
+            $hotel_id = session('user.hotel.id');
+        @endphp
 
    <nav class=" navbar navbar-expand-sm p-2 fixed-top" style="background-color:rgba(173, 185, 203, 0.649); box-shadow:0px 3px 10px -1px black; ">
         <div class="container-fluid ms-5">
@@ -34,13 +32,13 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse ms-5 row" id="navbarsExample03">
-                <div class="col-sm-8">
+                <div class="col-sm-7">
                     <ul class="navbar-nav ms-5  mb-2 mb-sm-0">
-                        <li class="nav-item">
-                            <a class="nav-link me-2" style="color: rgb(14, 10, 74); text-decoration:underline;" href="{{route('accueil')}}">Accueil</a>
+                        <li class="nav-item {{ Request::is('accueil') ? 'activeM' : '' }}">
+                            <a class="nav-link me-2  " style="color: rgb(14, 10, 74);" href="{{route('accueil')}}">Accueil</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link me-2" style="color: rgb(14, 10, 74);"  href="{{route('historique')}}">Histoire</a>
+                        <li class="nav-item ">
+                            <a class="nav-link me-2 {{ Request::is('historique') ? 'activeM' : '' }}" style="color: rgb(14, 10, 74);"  href="{{route('historique')}}">Histoire</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link me-2"style="color: rgb(14, 10, 74)" href=" {{route('site_touristique')}} ">Site Touristiques</a>
@@ -53,20 +51,21 @@
                         </li>
                     </ul>
                 </div>
-                <div class="col-sm-4">
-                    <form class="d-flex langue" role="search">
-                        <button class="btn btn-success px-2 mx-2" >EN <i class="fa fa-chevron-down"></i></button>
-
+                <div class="col-sm-5">
+                    <div class="d-flex justify-content-center langue" role="search">
                         @if (session()->has('user'))
-                            <h6 class="mt-2">Bienvenue, {{ session('user')['name'] }}</h6>
+                           <p class="fw-bold" style="text-align:center; font-size:18px; margin-top:5px;">Bienvenue {{ session('user')['name'] }}</p>
+                            @if (session('user')['role'] == 'admin_secondaire')
+                                <a href="{{route('admin_hotel', ['hotel_id' =>$hotel_id])}}" class="btn btn-success fw-bold nav nav-link" style="margin-left: 50px; color:black;">Admin</a>
+                            @endif
                             <form action="{{ route('logout') }}" method="POST">
                                 @csrf
-                                <input type="submit" class="btn btn-danger ms-3" value="Déconnexion">
+                                <input type="submit" class="btn btn-danger p-2 ms-3" value="Déconnexion" style="margin-top: 0px">
                             </form>
                         @else
                             <a href="{{ route('login') }}" class="btn btn-primary">Connexion</a>
                         @endif
-                    </form>
+                    </div>
                 </div>
         </div>
         </div>
@@ -75,7 +74,7 @@
     @yield('content')
 
 
-    <div class="container-fluid bg-light p-3"
+    <div class="container-fluid bg-light p-3">
     {{-- style="color: rgb(7, 4, 54);z-index: 1000; background-image:url('{{asset('img/UserImages/tribune.png')}}');
     background-repeat:no-repeat;"> --}}
         <footer class="py-5 px-5">
@@ -137,6 +136,10 @@
     <script src="{{ asset('js/bootstrap.min.js') }}"></script>
 
     <script src=" {{ asset('vendor/fontawesome-free/js/all.min.js') }}"></script>
+
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+
 </body>
 </html>
 <!-- chercher a propos de timeline et pricing pour des pages tabs -->

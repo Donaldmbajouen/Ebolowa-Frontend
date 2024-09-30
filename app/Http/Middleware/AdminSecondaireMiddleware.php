@@ -16,11 +16,16 @@ class AdminSecondaireMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (Auth::check() && auth('sanctum')->user()->role == "admin_secondaire") {
-            return $next($request);
+        // Vérifier si l'utilisateur est connecté et a un token
+        if (session()->has('user') && session()->has('access_token')) {
+            $user = session('user');
+            // Vérifier si le rôle est admin
+            if ($user['role'] === 'admin_secondaire') {
+
+                return $next($request);
+            }
         }
 
-        return response()->json(['error' => 'Accès refusé.'], 403);
-
+        return abort(401); //
     }
 }

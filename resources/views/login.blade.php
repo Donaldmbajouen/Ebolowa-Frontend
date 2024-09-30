@@ -9,7 +9,10 @@
     <title>Ebolowa.com</title>
 </head>
     <div class="wrapper ">
-        @if (session('success'))
+
+
+        <div class="container main ">
+            @if (session('success'))
                 <div class="alert alert-info p-3" role="alert">
                     {{session('success')}}
                 </div>
@@ -19,8 +22,6 @@
                     {{session('error')}}
                 </div>
             @endif
-
-        <div class="container main ">
 
             <div class="rounded-3 " style="padding-right:13px;background-color: #1e0847;" >
                 <div class="row row1  p-3" style="border-bottom-right-radius: 40%;border-top-left-radius: 1%;">

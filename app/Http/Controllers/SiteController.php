@@ -20,39 +20,14 @@ class SiteController extends Controller
 
 
 
-   
+
 
 
     public function show($id){
         return view('Admin.SiteTouristiques.SeeSiteTouristique');
     }
 
-
-    public function update( Request $request, $id){
-        $validateData=$request->validate([
-            'name'=> 'required|string',
-            'image' =>'required|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'type' =>'integer|max:6',
-            'description'=> 'required|string',
-            'longitude'=> 'required|string',
-            'lattitude' => 'required|string',
-            'gerant_id' => 'required|exists:users,id'
-        ]);
-        $response = Http::post("{$appUrl}/api/admin/SiteTouristique/create", [
-        'name' => $validateData['name'],
-        'description' => $validateData['description'],
-        'type' => $validateData['type'],
-        'longitude' => $validateData['longitude'],
-        'lattitude' => $validateData['lattitude'],
-        'image' => $imagePath,
-        'gerant_id' => $validateData['gerant_id'],
-        'statut' => $validateData['statut'],
-        ]);
-        if($response->successful()){
-            redirect('AdminSiteTouristiques')->with('message', 'SiteTouristique Modifie Avec Succes');
-        }
-
-    }
+    
 
     public function destroy($id){
         // $SiteTouristique->statut = 0;

@@ -6,6 +6,7 @@
         <div class="col-md-1"></div>
         <div class="col-md-10 table-responsive p-3 centered shadow-lg " style="background-color: white; color:black;">
             <h2>Ajouter un hotel</h2>
+            {{-- {{dd($hotel['image']) }} --}}
             @if (session('success'))
                 <div class="alert alert-success">
                     {{ session('success') }}
@@ -17,7 +18,6 @@
                 </div>
             @endif
             <div class="col mt-2">
-
                 <div class="col">
                     <form action="{{route('PostUpdateHotel', ['id' => $hotel['id']])}}" method="POST" class="p-4"  enctype="multipart/form-data">
                         @csrf
@@ -68,13 +68,13 @@
                                 {{-- {{dd($adminNames)}} --}}
                                 <label for="">Selectionner le type D'Hotel</label>
                                 <select class="form-select @error('type') is-invalid @enderror" value="{{$hotel['type'] }}" name="type" aria-label="Default select example">
-                                    <option selected>01 etoiles</option>
-                                    <option value="1">02 etoiles</option>
-                                    <option value="2">03 etoiles</option>
-                                    <option value="3">04 etoiles</option>
+                                    <option value="1" selected>01 etoiles</option>
+                                    <option value="2">02 etoiles</option>
+                                    <option value="3">03 etoiles</option>
+                                    <option value="4">04 etoiles</option>
                                 </select>
                                 <span style="color: red; margin-left: 10px">
-                                    @error('name')
+                                    @error('type')
                                     {{$message}}
                                     @enderror
                                 </span>
@@ -86,22 +86,23 @@
                                     <option value="0">Desactive</option>
                                 </select>
                                 <span style="color: red; margin-left: 10px">
-                                    @error('name')
+                                    @error('statut')
                                     {{$message}}
                                     @enderror
                                 </span>
                             </div>
                         </div>
                         <div class="row mt-3">
-                            <select class="form-control @error('gerant_id') is-invalid @enderror" id="adminSelect" name="gerant_id" required>
-                                <option value="">Sélectionner le Gerant de l'hotel</option>
+                            <select class="form-control @error('user_id') is-invalid @enderror" id="adminSelect" name="user_id" required>
+                                <option value="{{$hotel['user_id']}}">Gerant Actuel de l"hotel</option>
 
                                 @foreach ($adminNames as $id => $name)
+
                                     <option value="{{$id}}">{{ $name }}</option>
                                 @endforeach
                             </select>
                             <span style="color: red; margin-left: 10px">
-                                @error('gerant_id')
+                                @error('user_id')
                                 {{$message}}
                                 @enderror
                             </span>
@@ -109,7 +110,9 @@
                         <div class="row mt-3">
                             <div class="col-md-12">
                                 <label for="name">Ajouter une Description de L'Hotel</label>
-                                <input type="textarea" name="description" value="{{$hotel['description'] }}" class="form-control @error('description') is-invalid @enderror">
+                                <textarea label="textarea" name="description"  class="form-control @error('description') is-invalid @enderror">
+                                    {{$hotel['description'] }}
+                                </textarea>
                             </div>
                             <span style="color: red; margin-left: 10px">
                                 @error('description')
